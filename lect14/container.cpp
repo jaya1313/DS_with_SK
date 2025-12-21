@@ -20,12 +20,27 @@ int mostWater(int height[9],int size){
 }
 
 //more optimised way
-int water(){
-    
+int maxWater(int height[9],int size){
+    int lp=0,rp=size-1,maxWater=0;
+    while(lp < rp){
+        int w=rp - lp;
+        int h=min(height[rp],height[lp]);
+        int currWater=w*h;
+        maxWater=max(currWater,maxWater);
+        if(height[lp]<height[rp]){
+            lp++;
+        }
+        else{
+            rp--;
+        }
+    }
+    return maxWater;
 }
 
 int main(){
     int height[9]={1,8,6,2,5,4,8,3,7};
     int size=9;
-    cout<< mostWater(height,size);
+    // cout<< mostWater(height,size);
+    cout<< maxWater(height,size);
+
 }
