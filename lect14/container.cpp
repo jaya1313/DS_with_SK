@@ -19,6 +19,11 @@ int mostWater(int height[9],int size){
     return maxWater;
 }
 
+//more optimised way
+int water(){
+    
+}
+
 int main(){
     int height[9]={1,8,6,2,5,4,8,3,7};
     int size=9;
