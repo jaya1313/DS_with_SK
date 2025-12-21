@@ -3,21 +3,20 @@
 #include<algorithm>
 using namespace std;
 //brute force approach
-int mostWater(int height[9],int size){
-    int maxWater=0,h,w;
-    for(int i=0;i<size;i++){
-        for(int j=i+1;j<size;j++){
-            int width=j-i;
-            int hei=min(height[i],height[j]);
-            int ans=hei*width;
-            if(ans>maxWater){
-                maxWater=ans;
-            }
-        }
-    }
-    
-    return maxWater;
-}
+// int mostWater(int height[9],int size){
+//     int maxWater=0,h,w;
+//     for(int i=0;i<size;i++){
+//         for(int j=i+1;j<size;j++){
+//             int width=j-i;
+//             int hei=min(height[i],height[j]);
+//             int ans=hei*width;
+//             if(ans>maxWater){
+//                 maxWater=ans;
+//             }
+//         }
+//     }
+//      return maxWater;
+// }
 
 //more optimised way
 int maxWater(int height[9],int size){
@@ -36,7 +35,6 @@ int maxWater(int height[9],int size){
     }
     return maxWater;
 }
-
 int main(){
     int height[9]={1,8,6,2,5,4,8,3,7};
     int size=9;
