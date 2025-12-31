@@ -2,6 +2,8 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
+//container with most water
+
 //brute force approach
 // int mostWater(int height[9],int size){
 //     int maxWater=0,h,w;
