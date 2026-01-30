@@ -16,7 +16,7 @@ bool isValid(vector<int>arr,int n,int m,int maxAllowedPages){ //O(n)
             pages=arr[i];
         }
     }
-    return stu>m ?false:true;
+    return stu>m ? false : true;
 }
 
 int allocateBooks(vector<int>arr,int n,int m){
