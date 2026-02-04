@@ -5,7 +5,7 @@ using namespace std;
 //Sorting an array with 0s,1s and 2s.  Or sort colors(leetcode)
 
 void sortColors(vector<int>&arr,int n){
-    int count0=0,count1=0,count2=0;
+    int count0=0,count1=0,count2=0;      //tc is O(n)
 
      for(int i=0;i<n;i++){
      if(arr[i]==0)
@@ -27,8 +27,22 @@ void sortColors(vector<int>&arr,int n){
     }
 }
 
-void sortColors2(vector<int> &arr,int n){    //more optimised way,DNF(dutch national flag approach)
+//here the time complexity remains same but it is the more optimised way to sort
 
+void sortColors2(vector<int> &arr,int n){    //DNF(dutch national flag) approach
+    int mid=0,low=0,high=n-1;
+    while(mid<=high){
+        if(arr[mid]==0){
+        swap(arr[low],arr[mid]);
+        mid++,low++;
+    }
+    else if(arr[mid]==1)
+    mid++;
+    else{
+    swap(arr[high],arr[mid]);
+    high--;
+    }
+    }
 }
 
 void printArray(vector<int>arr,int n){
@@ -41,7 +55,7 @@ void printArray(vector<int>arr,int n){
 int main(){
     vector<int>arr={2,0,1,0,2,1,0,1,2,0};
     int n=arr.size();
-    sortColors(arr,n);
+    sortColors2(arr,n);
     printArray(arr,n);
     return 0;
 }
