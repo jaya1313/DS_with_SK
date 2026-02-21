@@ -28,4 +28,17 @@ using namespace std;
     // cout << vec.back() << endl;  //returns the last element
 
 
+    // iterators in vector
+
+    //forward
+    vector<int>::iterator it;  // or we can write 'auto'
+    for(it=vec.begin(); it!=vec.end(); it++){           // vec.end - last index ke baad wala not the last index
+        cout << *(it) <<" ";
+    }
+    cout << endl;
+  
+    //backward
+    for(auto it=vec.rbegin(); it!=vec.rend(); it++){   //rbegin-last index ka next 
+        cout << *(it) <<" ";
+    }
  }
