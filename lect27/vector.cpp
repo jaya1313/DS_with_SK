@@ -28,7 +28,7 @@ using namespace std;
     // cout << vec.back() << endl;  //returns the last element
 
 
-    // iterators in vector
+    // iterators in vecto
 
     //forward
     vector<int>::iterator it;  // or we can write 'auto'
