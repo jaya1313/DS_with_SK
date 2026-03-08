@@ -15,8 +15,19 @@ int main(){
     m["mobile"]=50;
     m["watch"]=100;
 
+    m.emplace("camera",25);
+
+    m.erase("tv");
+
     for(auto p: m){
         cout << p.first << " " <<p.second<< endl;
+    }
+
+    if(m.find("camera") != m.end()) {
+        cout << "found\n";
+    }
+    else{
+        cout <<"not found";
     }
     return 0;
 }
