@@ -29,5 +29,9 @@ int main(){
     cin.getline(str1,12,'@');
 
     cout << "output:" << str1 << endl;
+    for(char ch: str1){
+        cout << ch << " ";
+    }
+    cout << endl;
     return 0;
 }
