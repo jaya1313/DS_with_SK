@@ -62,6 +62,11 @@ int main(){
 
     getline(cin,s);
     cout << s;
+    for(int i=0;i<str.length();i++){
+        cout << str[i] << " ";
+
+    }
+    cout << endl;
 
     return 0;
 }
