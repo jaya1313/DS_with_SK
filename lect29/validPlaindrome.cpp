@@ -7,6 +7,11 @@ using namespace std;
 
 //valid palindrome
 
+// to find whether a char is alphaNumeric the c++ gives a in built function 
+// the c++ function isalnum() is used to dectect the alphaNumeric char ,
+// it is  in <cctype> header file.
+//syntax isalnum(ch)
+
 bool isalphaNum(char ch){
     if(ch>='0' && ch<='9' || (tolower(ch)>= 'a' && tolower(ch)<='z')){
         return true;
