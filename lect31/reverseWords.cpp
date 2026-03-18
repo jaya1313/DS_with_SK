@@ -9,11 +9,11 @@ using namespace std;
 
 string reverseWords(string s,int n){
 
-      string ans=" ";
+      string ans="";
 
     reverse(s.begin(),s.end());
     for(int i=0;i<n;i++){
-        string word=" ";
+        string word="";
         while(i<n && s[i]!=' '){
             word+=s[i];
             i++;
