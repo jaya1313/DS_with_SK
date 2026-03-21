@@ -9,7 +9,7 @@ using namespace std;
 //then store its count in that array only,same procedure for all chars
 //443 on leetcode
 
-int stringCompress(vector<char> chars,int n){
+int stringCompress(vector<char> &chars,int n){
       int idx=0;
       for(int i=0;i<n;i++){
          char ch = chars[i];
