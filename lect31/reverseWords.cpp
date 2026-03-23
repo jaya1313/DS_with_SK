@@ -28,7 +28,7 @@ string reverseWords(string s,int n){
 }
 
 int main(){
-    string s="hello world";
+    string s="apna college";
     int n=s.length();
     cout << reverseWords(s,n);
 }
