@@ -8,18 +8,33 @@ using namespace std;
 // 1. check prime or not
 //2.count prime numbers between a given range(brute force approach)
 // optimised approachfor counting prime no.s(Sieve of Eratosthenes)
+//204 on leetcode
 
-string isPrime(int n){
+bool isPrime(int n){
       for(int i=2;i<n;i++){
         if(n%i==0){
-            return "non prime";
+            return false;
         }
       }
-      return "prime";
+      return true;
+}
+
+bool countPrimes(){          // optimed approach(Sieve of Eratosthenes)
+
 }
 
 int main(){
     int n=47;
-    cout << isPrime(n);
+    cout << isPrime(n) << endl;
+   
+    int L=2;
+    int R=50;
+    int count=0;
+    for(int i=L;i<=R;i++){         // brute force approch
+        if(isPrime(i)){
+            count++;
+        }
+    }
+    cout << "no.of prime :" << count<< endl;
     
 }
