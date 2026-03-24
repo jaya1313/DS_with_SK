@@ -19,8 +19,18 @@ bool isPrime(int n){
       return true;
 }
 
-bool countPrimes(){          // optimed approach(Sieve of Eratosthenes)
-
+int countPrimes(int n1){          // optimed approach(Sieve of Eratosthenes)
+         vector<bool>isprime(n1+1,true);  // find count of prime no.s less than n1
+         int count=0;
+         for(int i=2;i<n1;i++){
+            if(isprime[i]){
+                 count++;
+                 for(int j=i*2;j<n1;j=j+i){
+                    isprime[j]=false;
+                 }
+            }
+         }
+         return count;
 }
 
 int main(){
@@ -36,5 +46,6 @@ int main(){
         }
     }
     cout << "no.of prime :" << count<< endl;
+    cout << countPrimes(50);
     
 }
