@@ -45,10 +45,19 @@ int gcd(int a,int b){
     return a;
 }
 
+int gcdRec(int a,int b){  // assume a is greater than b
+    if(b==0)
+    return a;
+
+    return gcdRec(b,a%b);   // after modulas b becomes larger 
+    
+}
+
 int main(){
     int a=20;
     int b=28;
     cout << findGCD(a,b) << endl;
     cout << gcd(a,b) << endl;
+    cout << gcdRec(a,b);
     return 0;
 }
