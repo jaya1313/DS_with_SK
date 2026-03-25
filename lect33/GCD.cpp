@@ -53,11 +53,19 @@ int gcdRec(int a,int b){  // assume a is greater than b
     
 }
 
+// for LCM of a,b is calulated by-> (a*b) / gcd(a,b)
+
+int lcm(int a,int b){
+    int gcd=gcdRec(a,b);
+    return (a*b)/gcd;
+}
+
 int main(){
     int a=20;
     int b=28;
     cout << findGCD(a,b) << endl;
     cout << gcd(a,b) << endl;
-    cout << gcdRec(a,b);
+    cout << gcdRec(a,b) << endl;
+    cout << lcm(a,b) << endl;
     return 0;
 }
