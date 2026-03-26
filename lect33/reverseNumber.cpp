@@ -1,4 +1,7 @@
 #include<iostream>
+#include<algorithm>
+#include<climits>
+
 
 using namespace std;
 
@@ -10,6 +13,9 @@ int reverse(int n){
     while(n!=0){
     
         int dig=n%10;
+        if(revNum > INT_MAX/10 || revNum < INT_MIN/10){
+                return 0;
+            }
         revNum=(revNum*10) + dig;
 
         n=n/10;
