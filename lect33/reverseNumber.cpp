@@ -23,7 +23,20 @@ int reverse(int n){
     return revNum;
 }
 
+bool checkPalindrome(int n){
+
+    if(n<0){
+        return false;
+    }
+
+    int revNum=reverse(n);
+    
+    return (revNum == n);
+}
+
 int main(){
-    cout << reverse(4537) << endl;
+    int n=353;
+    cout << reverse(n) << endl;
+    cout<< checkPalindrome(n) << endl;
     return 0;
 }
