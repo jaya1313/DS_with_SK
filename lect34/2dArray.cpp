@@ -30,5 +30,18 @@ int main(){
             cin >> matrix[i][j];
         }
     }
+
+    //linear search 
+    int key=8;
+    for(int i=0;i<rows;i++){
+        for(int j=0;j<columns;j++){
+            if(matrix[i][j]==key){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
     return 0;
 }
