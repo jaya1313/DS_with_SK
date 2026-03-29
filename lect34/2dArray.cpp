@@ -1,5 +1,7 @@
 #include<iostream>
+#include<climits>
 #include<utility>
+#include<algorithm>
 
 using namespace std;
 
@@ -21,8 +23,30 @@ using namespace std;
 
 //maximum row sum
 
-int maxRowsum(int matrix[][3],int rows,int columns){
-    
+int maxRowsum1(int matrix[][3],int rows,int columns){
+    int maxRowSum=INT_MIN;
+    for(int i=0;i<rows;i++){
+        int maxRowI=0;
+        for(int j=0;i<columns;j++){
+            maxRowI+=matrix[i][j];
+        }
+        maxRowSum=max(maxRowSum , maxRowI);
+    }
+    return maxRowSum;
+}
+
+// max column sum
+
+int maxcolsum1(int matrix[][3],int rows,int columns){
+    int maxcolSum=INT_MIN;
+    for(int i=0;i<columns;i++){
+        int maxcolsI=0;
+        for(int j=0;i<rows;j++){
+            maxcolsI+=matrix[j][i];
+        }
+        maxcolSum=max(maxcolSum , maxcolsI);
+    }
+    return maxcolSum;
 }
 
 int main(){
@@ -31,8 +55,11 @@ int main(){
     int rows=4;
     int columns=3;
     int key=8;
-    pair<int,int> ans=linearSearch(matrix,rows,columns,key);
-    cout<< ans.first << " " << ans.second << endl; 
+    // pair<int,int> ans=linearSearch(matrix,rows,columns,key);
+    // cout<< ans.first << " " << ans.second << endl; 
+    cout << maxRowsum1(matrix,rows,columns) << endl;
+    cout << maxcolsum1(matrix,rows,columns) << endl;
+
 
     // cout << matrix[2][1] << endl;    // acess element
     // matrix[2][1] = 18;
