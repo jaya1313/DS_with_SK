@@ -2,6 +2,13 @@
 #include<vector>
 using namespace std;
 
+// search a 2d array in which 
+// each row is sorted in a non decreasing order (given)
+// first integer of each row is greater than the last interger of privious row (given)
+// code must be in O(log(n*m)) time complexity
+
+//74 on leetcode
+
 bool searchInRow(vector<vector<int>>& matrix, int target ,int row){
         int n=matrix[0].size();
         int st=0;
