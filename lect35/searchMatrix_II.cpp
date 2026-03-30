@@ -5,7 +5,7 @@ using namespace std;
 // search a 2d array in which 
 // Integers in each row are sorted in ascending from left to right.
 // Integers in each column are sorted in ascending from top to bottom.
-// code must be in O(log(n*m)) time complexity
+//  O(n+m) time complexity
 
 //240 on leetcode
 
