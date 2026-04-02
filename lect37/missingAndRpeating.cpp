@@ -3,6 +3,8 @@
 #include<unordered_set>
 using namespace std;
 
+// problem 2965 on leetcode
+
 //Repeating and missing value
 // range is [1,n*n]
 // a which is repeating value in a grid
@@ -29,11 +31,16 @@ vector<int> findMissingAndRepeatingValues(vector<vector<int>>grid){
     expSum= (n*n) *(n*n +1)/2;
     b=expSum + a - actualSum;
     ans.push_back(b);
-    
+
     return ans;
 }
 
 int main(){
+    vector<vector<int>> grid={{9,1,7},{8,9,2},{3,4,6}};
+    vector<int> result = findMissingAndRepeatingValues(grid);
+    for(int x:result){
+         cout << x << " ";
+    }
 
     return 0;
 }

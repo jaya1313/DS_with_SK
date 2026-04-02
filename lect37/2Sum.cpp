@@ -3,8 +3,11 @@
 #include<unordered_map>
 
 using namespace std;
+//problem 1 on leetcode
 
 //2Sum , sum of pair of 2 no.s is equal to target
+//You may assume that each input would have exactly one solution,
+// and you may not use the same element twice.
 
 // brute forch approach(O(n*n))
 // int twoSum(vector<int> arr,int target){
