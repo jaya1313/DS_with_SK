@@ -12,7 +12,7 @@ using namespace std;
 
 // 15 on leetcode
 
-
+// brute force approach
 vector<vector<int>> threeSum(vector<int>& nums) {
         int n= nums.size();
         vector<vector<int>> ans;
@@ -37,6 +37,9 @@ vector<vector<int>> threeSum(vector<int>& nums) {
         }
         return ans;
     }
+
+    // better approach
+    
 
 
 int main(){
