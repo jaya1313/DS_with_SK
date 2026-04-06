@@ -35,7 +35,7 @@ int getDiagonalSum(int mat[][3],int n){
 int main(){
     int mat[3][3]={{1,2,3},{4,5,6},{7,8,9}};
     int n=3;
-   // cout << diagonalSum(mat,n) << endl;
-    cout << getDiagonalSum(mat,n) << endl;
+    cout << diagonalSum(mat,n) << endl;
+    //cout << getDiagonalSum(mat,n) << endl;
     return 0;
 }
