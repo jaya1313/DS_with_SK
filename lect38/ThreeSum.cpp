@@ -39,6 +39,12 @@ using namespace std;
 //     }
 
     // better approach
+    //using two pointer approach
+    // sort the array first
+    // using hashing
+    vector<vector<int>> threeSum(vector<int>& nums) {
+         int n= nums.size();
+    }
     
 
 
