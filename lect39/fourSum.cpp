@@ -13,6 +13,9 @@ using namespace std;
 //nums[a] + nums[b] + nums[c] + nums[d] == target
 //You may return the answer in any order.
 
+//using 2 pointer approach
+//Time complexity: O(nlogn + n^3)
+
 vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>> ans;
         int n= nums.size();
@@ -49,3 +52,14 @@ vector<vector<int>> fourSum(vector<int>& nums, int target) {
         }
         return ans;
     }
+
+ int main(){
+    vector<int> nums={1,0,-1,0,-2,2};
+    int target=0;
+    vector<vector<int>> ans = fourSum(nums, target);
+    for(auto x: ans){
+        for(auto y: x){
+            cout<<y<<" ";
+        }
+        cout<<endl;
+    }    return 0;   
