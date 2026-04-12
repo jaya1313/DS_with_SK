@@ -62,4 +62,6 @@ vector<vector<int>> fourSum(vector<int>& nums, int target) {
             cout<<y<<" ";
         }
         cout<<endl;
-    }    return 0;   
+    }
+        return 0;  
+} 
