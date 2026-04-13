@@ -28,6 +28,11 @@ int subarraySum(vector<int>& nums, int k){
     return count;
 }
 
+int subarraySum2(vector<int>& nums, int k){
+    
+
+}
+
 int main(){
     vector<int> nums={9,4,20,3,10,5,3};
     int k=33;
