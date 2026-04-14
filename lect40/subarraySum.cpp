@@ -29,6 +29,8 @@ int subarraySum(vector<int>& nums, int k){
     return count;
 }
 
+// more optimised way
+//using hashing
 int subarraySum2(vector<int>& arr, int k) {
         int n=arr.size();
         int count = 0;
