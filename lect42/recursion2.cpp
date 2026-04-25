@@ -4,7 +4,7 @@ using namespace std;
 
 //fabonacci series using recursion    (509 on leetcode)
 
-int fab(int n){
+int fab(int n){                  //time compl. = O(2 to the power n)  space compl. =  O(n)
     if(n==0 || n==1){
         return n;
     }
@@ -13,7 +13,7 @@ int fab(int n){
 
 // if array is sorted using recursion
 
-bool isSorted(vector<int> arr, int n){
+bool isSorted(vector<int> arr, int n){   // time and space compl. =  O(n)
     if(n==0 || n==1){
         return true;
     }
