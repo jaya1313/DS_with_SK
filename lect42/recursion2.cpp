@@ -20,7 +20,7 @@ bool isSorted(vector<int> arr, int n){   // time and space compl. =  O(n)
     return arr[n-1] >= arr[n-2] && isSorted(arr, n-1);
 }
 
-int bSearch(vector<int> arr,int tar,int st,int end){
+int bSearch(vector<int> arr,int tar,int st,int end){    // time and space compl. =  O(log(n))
     if(st <= end){
         int mid = st + (end-st) / 2;
         if(arr[mid] == tar)
