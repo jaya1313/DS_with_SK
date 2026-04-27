@@ -3,7 +3,7 @@
 using namespace std;
 
 //backtracking with recursion
-// find all subsets of an array
+// find all subsets of an array    (time complexity = O(2 to the power n  * n))
 
 void printSubsets(vector<int> &arr,vector<int> ans, int i){
     if(i == arr.size()){
