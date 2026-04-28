@@ -55,8 +55,9 @@ void printSubsetwithDup(vector<int> &arr,vector<int> ans, int i){
 }
 
 int main(){
-    vector<int> arr ={1,2,3};
+    vector<int> arr ={1,2,2};
     vector<int> ans;
-    printSubsets(arr, ans, 0);
+    printSubsetwithDup(arr, ans, 0);
+    //printSubsets(arr, ans, 0);
     return 0;
 }
