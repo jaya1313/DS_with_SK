@@ -26,7 +26,7 @@ void printSubsets(vector<int> &arr,vector<int> ans, int i){
 
 }
 
-//subset 2  (array with duplicate number)
+//subset 2  (array with duplicate number) (same t(c) = O(n* 2 to the power n))
 
 void printSubsetwithDup(vector<int> &arr,vector<int> ans, int i){
 
