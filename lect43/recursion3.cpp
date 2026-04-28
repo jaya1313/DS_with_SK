@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 //backtracking with recursion
@@ -22,6 +23,34 @@ void printSubsets(vector<int> &arr,vector<int> ans, int i){
     // Exclude
     ans.pop_back();    //backtrack
     printSubsets(arr, ans, i+1);
+
+}
+
+//subset 2  (array with duplicate number)
+
+void printSubsetwithDup(vector<int> &arr,vector<int> ans, int i){
+
+    if(i == arr.size()){
+        //print ans
+        for(int val : ans){
+            cout << val << " ";
+        }
+        cout << endl;
+        return;
+    }
+
+    // Include
+    ans.push_back(arr[i]);
+    printSubsetwithDup(arr, ans, i+1);
+
+    
+    ans.pop_back();    //backtrack
+    int idx = i+1;
+    while(idx < arr.size() && arr[idx] == arr[idx-1]) idx++;
+
+    // Exclude
+    printSubsetwithDup(arr, ans, idx);
+    
 
 }
 
