@@ -18,15 +18,15 @@ void getPermutation(vector<int> &nums, int idx,vector<vector<int>> &ans){
     
 }
 
+vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        getPermutation(nums, 0, ans);
+        return ans;
+        
+    }
+
 int main(){
     vector<int> nums ={1,2,3};
-    vector<vector<int>> ans;
-    //getPermutation(nums,0,ans);
-    for(auto v : ans){
-        for(auto x : v){
-            cout<< x;
-        }
-        cout << endl;
-    }
+    permute(nums);
     return 0;
 }
