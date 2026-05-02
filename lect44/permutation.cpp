@@ -25,6 +25,23 @@ vector<vector<int>> permute(vector<int>& nums) {
         
     }
 
+
+// permutation in strings code
+void permute2(string s, string ans) {
+    if (s.length() == 0) {
+        cout << ans << endl;
+        return;
+    }
+
+    for (int i = 0; i < s.length(); i++) {
+        char ch = s[i];
+        string left = s.substr(0, i);
+        string right = s.substr(i + 1);
+        //permute(left + right, ans + ch);
+    }
+}
+
+
 int main(){
     vector<int> nums ={1,2,3};
     permute(nums);
