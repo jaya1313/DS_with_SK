@@ -54,5 +54,6 @@ void nQueens(vector<string> &board, int row, int n, vector<vector<string>> &ans)
     }
 
 int main(){
+    solveNQueens(4);
     return 0;
 }
