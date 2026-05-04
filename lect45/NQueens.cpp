@@ -46,6 +46,13 @@ void nQueens(vector<string> &board, int row, int n, vector<vector<string>> &ans)
         }
     }
 
+    vector<vector<string>> solveNQueens(int n) {
+        vector<string> board(n, string(n, '.'));
+        vector<vector<string>> ans;
+        nQueens(board,0,n,ans);
+        return ans;
+    }
+
 int main(){
     return 0;
 }
