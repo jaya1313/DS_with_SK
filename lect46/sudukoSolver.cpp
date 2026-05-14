@@ -2,12 +2,23 @@
 #include<vector>
 using namespace std;
 
+//54 on leetcode
+
+bool isSafe(vector<vector<char>> &board, int row, int col, char dig){
+    
+}
+
 bool sudukoSolver(vector<vector<char>> &board, int row, int col){
     if(row == board.size()){
         return true;
     }
     
-    for(int dig=1; dig<=9; dig++){
+    int nextRow = row, nextCol = col +1;
+    if(row == 9){
+        nextRow = row + 1;
+        nextCol = 0;
+    }
+    for(char dig=1; dig<=9; dig++){
         if(board[row][col] != '.'){
             int nextRow; 
             int nextCol;
