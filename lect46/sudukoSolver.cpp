@@ -6,6 +6,31 @@ using namespace std;
 
 bool isSafe(vector<vector<char>> &board, int row, int col, char dig){
     
+    //horizontal
+    for(int j=0; j<board.size(); j++){
+        if(board[row][j] == dig){
+            return false;
+        }
+    }
+
+    //vertical
+    for(int i=0; i<board.size(); i++){
+        if(board[i][col] == dig){
+            return false;
+        }
+    }
+
+    //3x3 box
+    int boxRow = 3 * (row / 3);
+    int boxCol = 3 * (col / 3);
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            if(board[boxRow + i][boxCol + j] == dig){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 bool sudukoSolver(vector<vector<char>> &board, int row, int col){
