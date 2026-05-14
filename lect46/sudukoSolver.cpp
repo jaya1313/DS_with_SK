@@ -2,7 +2,11 @@
 #include<vector>
 using namespace std;
 
-bool sudukoSolver(){
+bool sudukoSolver(vector<vector<char>> &board, int row, int col){
+    if(row == board.size()){
+        return true;
+    }
+    
     
 }
 
