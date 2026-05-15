@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-//54 on leetcode
+//37 on leetcode
 
 bool isSafe(vector<vector<char>> &board, int row, int col, char dig){
     
@@ -39,14 +39,12 @@ bool sudukoSolver(vector<vector<char>> &board, int row, int col){
     }
     
     int nextRow = row, nextCol = col +1;
-    if(row == 9){
+    if(nextCol == 9){
         nextRow = row + 1;
         nextCol = 0;
     }
-    for(char dig=1; dig<=9; dig++){
+    for(char dig='1'; dig<= '9'; dig++){
         if(board[row][col] != '.'){
-            int nextRow; 
-            int nextCol;
             sudukoSolver(board, nextRow , nextCol);
         }
         if(isSafe(board,row,col,dig)){
@@ -73,12 +71,12 @@ int main(){
         {'.','.','.','.','8','.','.','7','9'}
     };
     sudukoSolver(board, 0, 0);
-     for(int i=0; i<board.size(); i++){
-        for(int j=0; j<board.size(); j++){
-            cout<<board[i][j]<<" ";
-        }
-        cout<<endl;
-    }
+    //  for(int i=0; i<board.size(); i++){
+    //     for(int j=0; j<board.size(); j++){
+    //         cout<<board[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
     return 0;
 
 }
