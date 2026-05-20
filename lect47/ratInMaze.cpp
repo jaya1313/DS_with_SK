@@ -7,7 +7,7 @@ void helper(vector<vector<int>> &mat, int row, int col, string path, vector<stri
 
     int n = mat.size();
     //base conditions
-    if(row<0 || col<0 || mat[row][col] == 0 || mat[row][col] == -1){
+    if(row<0 || col<0 || row>=n || col>=n || mat[row][col] == 0 || mat[row][col] == -1){
         return;
     }
     if(row == n-1 && col == n-1){
@@ -46,5 +46,8 @@ int main(){
         {1,1,0,0},
         {0,1,1,1}
     };
-    findPath(mat);
+    vector<string> paths = findPath(mat);
+    for (string s : paths){
+        cout << s << endl;
+    }
 }
