@@ -3,12 +3,39 @@
 using namespace std;
 
 
+void helper(vector<vector<int>> &mat, int row, int col, string path, vector<string> &ans){
+
+    int n = mat.size();
+    //base conditions
+    if(row<0 || col<0 || mat[row][col] == 0 || mat[row][col] == -1){
+        return;
+    }
+    if(row == n-1 && col == n-1){
+        ans.push_back(path);
+        return;
+    }
+
+    //mark as visted
+    mat[row][col] = -1;
+
+    //explore all 4 directions
+    helper(mat, row+1, col, path+"D", ans);  //down
+    helper(mat, row-1, col, path+"U", ans);  //up
+    helper(mat, row, col-1, path+"L", ans);  //left
+    helper(mat, row, col+1, path+"R", ans);  //right
+
+    //backtrack
+    //mark as unvisted again
+    mat[row][col] = 1;
+}
+
+
 vector<string> findPath(vector<vector<int>> &mat){
     int n = mat.size();
     vector<string> ans;
     string path = "";
 
-    //helper(mat, 0, 0, path, ans);
+    helper(mat, 0, 0, path, ans);
     return ans;
 }
 
