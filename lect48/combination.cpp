@@ -1,8 +1,12 @@
 #include<iostream>
+#include<set>
 #include<vector>
 using namespace std;
 
-//combination sum
+//combination sum (we can use an element multiple times)
+//39 on leetcode
+
+set<vector<int>> s;
 void combinationSum(vector<int> &arr, int i, vector<int> &combi, vector<vector<int>> &ans, int target){
     // base cases
     int n = arr.size();
@@ -10,7 +14,10 @@ void combinationSum(vector<int> &arr, int i, vector<int> &combi, vector<vector<i
         return;
     }
     if(target == 0){
-        ans.push_back(combi);
+        if(s.find(combi) == s.end()){
+            ans.push_back(combi);
+            s.insert(combi);
+        }
         return;
     }
 
