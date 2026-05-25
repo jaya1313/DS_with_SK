@@ -26,7 +26,10 @@ void merge(vector<int> &arr,int st, int mid, int end){
        while(j<=end){
          temp.push_back(arr[j]);
          j++;
-       }   
+       }  
+       for(int idx=0; idx<temp.size(); idx++){
+        arr[idx + st] = temp[idx];
+       } 
 
         
 }
@@ -46,5 +49,8 @@ int main(){
 
     vector<int> arr = {12,8,32,31,54,35};
     mergeSort(arr,0,arr.size()-1);
+    for(auto vec: arr){
+        cout << vec << " ";
+    }
     return 0;
 }
