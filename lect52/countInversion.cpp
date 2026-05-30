@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-//count inversions
+//count inversions (follows 2 conditions i<j && arr[i] > arr[j])
 
 //brute force approach
 
@@ -17,5 +17,7 @@ int countInversions(vector<int> &arr,int count){
 }
 
 int main(){
+    vector<int> arr={6,3,2,7,1};
+    cout << countInversions(arr,0);
     return 0;
 }
