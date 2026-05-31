@@ -6,18 +6,33 @@ using namespace std;
 
 //brute force approach
 
-int countInversions(vector<int> &arr,int count){
-  for(int i=0; i<arr.size(); i++){
-    for(int j=i+1; j<arr.size();j++){
-        if(arr[i] > arr[j])
-        count++;
+// int countInversions(vector<int> &arr,int count){
+//   for(int i=0; i<arr.size(); i++){
+//     for(int j=i+1; j<arr.size();j++){
+//         if(arr[i] > arr[j])
+//         count++;
+//     }
+//   }
+//   return count;
+// }
+
+//optimised approach (using merge sort)
+
+int mergeSort(vector<int> &arr, int st, int end){
+    if(st < end){
+        int mid = st + (end-st)/2;
+        int leftCount = mergeSort(arr,st,mid);
+        int rightCount = mergeSort(arr,mid+1,end);
+
+        //merge(arr,st,mid,end);
+        //return leftCount + rightCount + invCount;
     }
-  }
-  return count;
+ return 0;   
 }
+
 
 int main(){
     vector<int> arr={6,3,2,7,1};
-    cout << countInversions(arr,0);
+    //cout << countInversions(arr,0);
     return 0;
 }
