@@ -8,10 +8,32 @@ class Teacher{
       double salary;
 
     public:
+    //non parameterized constructor
+    // Teacher(){
+    //     cout << "hi i am contructor" << endl;
+    //     dept = "cse";  //set default value for dept
+    // }
 
-    Teacher(){
-        cout << "hi i am contructor" << endl;
+
+     //parameterized constructor
+    Teacher(string n, string d, string s, double sal){
+        //this keyword pints to current object
+        this-> name = n;
+        this->dept = d;
+        this->subject = s;
+        this->salary = sal;
     }
+
+
+    //copy constructor
+    Teacher(Teacher &orgobj){
+        this-> name = orgobj.name;
+        this-> dept = orgobj.dept;
+        this-> subject = orgobj.subject;
+        this-> salary = orgobj.salary;
+
+    }
+
     //properties/attributes
     string name;
     string dept;
@@ -23,24 +45,22 @@ class Teacher{
         dept = newDept;
     }
 
-    void setSalary(double s){
-        salary = s;
-    }
+    void getInfo(){
+        cout << "Name: " << name << endl;
+        cout << "subject: " << subject << endl;
 
-    double getSalary(){
-        return salary;
     }
 };
 
 int main(){
 
-    Teacher t1;
-    t1.name = "jayaa";
-    t1.dept = "cse";
-    t1.subject = "oops";
-    t1.setSalary(10000);
+    Teacher t1("jayanti", "cse", "c++", 10100);
+    //t1.getInfo();
 
-    cout << t1.name << " " << t1.dept << " " << t1.subject << " " << t1.getSalary() << endl;
+    //Teacher t2(t1); //copy constructor
+
+    Teacher t2(t1); //custom copy constructor -> invoke
+    t2.getInfo();
     return 0;
 }
 
