@@ -6,22 +6,24 @@ class Student{
     public:
 
     string name;
-    double cgpa;
+    double *cgpaPtr;
 
     Student(string name, double cgpa){       
         this-> name = name;
-        this-> cgpa = cgpa; 
+        cgpaPtr = new double;
+        *cgpaPtr = cgpa; 
 
     } 
 
-    //destructor - deletes or deallocates the objects once called
+    //destructor - deletes or deallocates the objects once object gets out of scope
     ~Student(){
         cout << "Hi, I am Destructor.";
+        delete cgpaPtr;   // deletes the memory space which points the cgpaPtr
     }
 
     void getInfo(){
         cout << name << endl;
-        cout << cgpa << endl;
+        cout << *cgpaPtr << endl;
     }
 };
 
