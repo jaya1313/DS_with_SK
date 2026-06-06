@@ -6,13 +6,13 @@ class Person{
     string name;
     int age;
 
-    // Person(string name, int age){
-    //     this-> name = name;
-    //     this-> age = age;
-    // }
-    Person(){
-       cout << "I am a Person constructor"<< endl; // base class constructor always runs 1st 
+    Person(string name, int age){
+        this-> name = name;
+        this-> age = age;
     }
+    // Person(){
+    //    cout << "I am a Person constructor"<< endl; // base class constructor always runs 1st 
+    // }
 
     ~Person(){
        cout << "I am a Person destructor"<< endl; // base class destructor always runs after the child class 
@@ -25,8 +25,9 @@ class Student : public Person{
     public:
     int rollno;
 
-    Student(){
-        cout << "I am a student constructor"<< endl;  // this called after the base class constructor
+    Student(string name, int age, int rollno) : Person(name, age){
+        //cout << "I am a student constructor"<< endl;  // this called after the base class constructor
+        this->rollno = rollno;
     }
 
     void getInfo(){
@@ -42,10 +43,10 @@ class Student : public Person{
 };
 
 int main(){
-    Student s1;
-    s1.name = "Rahul Kumar";
-    s1.age = 31;
-    s1.rollno = 1234;
+    Student s1("Rahul Kumar", 31, 1234);
+    // s1.name = "Rahul Kumar";
+    // s1.age = 31;
+    // s1.rollno = 1234;
     s1.getInfo();
     return 0;
 }
