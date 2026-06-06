@@ -11,7 +11,11 @@ class Person{
     //     this-> age = age;
     // }
     Person(){
+       cout << "I am a Person constructor"<< endl; // base class constructor always runs 1st 
+    }
 
+    ~Person(){
+       cout << "I am a Person destructor"<< endl; // base class destructor always runs after the child class 
     }
 };
 
@@ -21,11 +25,20 @@ class Student : public Person{
     public:
     int rollno;
 
+    Student(){
+        cout << "I am a student constructor"<< endl;  // this called after the base class constructor
+    }
+
     void getInfo(){
         cout << "name: " << name << endl;
         cout << "Age: " << age << endl;
         cout << "Rollno: " << rollno << endl;
     }
+    ~Student(){
+        cout << "I am a student destructor"<< endl;  // this called first (begore the base class destructor)
+    }
+
+
 };
 
 int main(){
