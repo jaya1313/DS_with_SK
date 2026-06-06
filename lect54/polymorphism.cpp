@@ -26,3 +26,24 @@ using namespace std;
 
 //     return 0;
 // }
+
+//2. function overloading
+
+class Print{
+    public:
+
+    void show(int x){
+        cout << "x: " << x << endl;
+    }
+
+    void show(char ch){
+        cout << "ch: " << ch << endl;
+    }
+};
+
+int main(){
+    Print p1;
+    p1.show(101);
+    p1.show('f');
+    return 0;
+}
