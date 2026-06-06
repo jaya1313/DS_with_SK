@@ -8,7 +8,7 @@ class Person{
     int age;
 };
 
-class Student:{
+class Student{
     public:
     int rollno;
 };
@@ -23,17 +23,6 @@ int main(){
     g1.name="rahul";
     g1.age = 56;
     g1.rollno = 345;
-    g1.researchArea = "Quantum Physics";
-    cout << g1.name << endl;
-    cout << g1.researchArea << endl;
-    return 0;
-}
-
-int main(){
-    GradStudent g1;
-    g1.name="rahul";
-    g1.age = 56;
-    //g1.rollno = 345;
     g1.researchArea = "Quantum Physics";
     cout << g1.name << endl;
     cout << g1.researchArea << endl;
