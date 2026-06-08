@@ -56,8 +56,51 @@ class List{
             tail->next = newNode;
             tail = newNode;
         }
+    }
+
+    //pop-front
+    void pop_front(){
+        Node* temp = head;
+        if(head == NULL){
+            cout << "linked list is empty";
+            return;
+        }
+        head = temp->next;
+        temp->next = NULL;
+        delete temp;
+    }
+
+    void pop_back(){
+        Node* ttemp;
+        Node* temp = head;
+        if(tail == NULL){
+            cout << "linked list is empty";
+            return;
+        }
+        while(temp->next != NULL){
+             ttemp = temp;
+            temp = temp->next;
+        }
+        tail = ttemp;
+        ttemp->next = NULL;
+        delete temp;
 
     }
+
+    //or
+    // void pop_back(){
+    //     if(tail == NULL){
+    //         cout << "linked list is empty";
+    //         return;
+    //     }
+    //     Node*temp = head;
+    //     while(temp->next == tail){
+    //         temp = temp->next;
+    //     }
+    //     temp->next = NULL;
+    //     delete tail;
+    //     tail = temp;
+    // }
 };
 
 int main(){
@@ -67,5 +110,7 @@ int main(){
     l1.push_front(3);
     l1.push_back(4);
     l1.push_back(5);
+    l1.pop_front();
+    l1.pop_back();
     l1.print_all();
 }
