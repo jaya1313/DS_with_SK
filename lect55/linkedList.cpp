@@ -114,11 +114,27 @@ class List{
         }
         Node *temp = head;
         for(int i=0; i<pos-1; i++){
+            if(temp == NULL){
+                 cout << "Invalid pos\n";
+            }
             temp= temp->next;
         }
         Node *newNode = new Node(val);
         newNode->next = temp->next;
         temp->next = newNode;
+    }
+
+    void search(int target){
+        int idx = 0;
+        Node* temp = head;
+        while(temp!= NULL){
+            if(temp->data == target){
+                cout << "found at idx: "<< idx << endl;
+                return;
+            }
+            idx++;
+            temp = temp->next;
+        }
 
     }
 };
@@ -130,5 +146,6 @@ int main(){
     l1.push_back(3);
     l1.push_back(4);
     l1.insert(5,1);
+    l1.search(5);
     l1.print_all();
 }
