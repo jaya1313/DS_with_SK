@@ -24,7 +24,7 @@ class List{
     }
 
     //push-front
-    void push_front(int val){
+    void push_front(int val){// O(1)
         Node* newNode = new Node(val);
         if(head == NULL){
             head = tail = newNode;
@@ -36,7 +36,7 @@ class List{
         }
     }
 
-    void print_all(){
+    void print_all(){// O(n)
         Node* temp = head;
         while(temp != NULL){
             cout << temp->data << " "; // 3->2->1->null
@@ -46,7 +46,7 @@ class List{
     }
 
     // push-back
-    void push_back(int val){
+    void push_back(int val){// O(1)
         Node* newNode = new Node(val);
         if(head == NULL){
             head = tail = newNode;
@@ -59,7 +59,7 @@ class List{
     }
 
     //pop-front
-    void pop_front(){
+    void pop_front(){// O(1)
         Node* temp = head;
         if(head == NULL){
             cout << "linked list is empty";
@@ -70,7 +70,7 @@ class List{
         delete temp;
     }
 
-    void pop_back(){
+    void pop_back(){// O(n)
         Node* ttemp;
         Node* temp = head;
         if(tail == NULL){
@@ -103,7 +103,7 @@ class List{
     // }
 
     // add node at any place
-    void insert(int val, int pos){
+    void insert(int val, int pos){// O(n)
         if(pos < 0){
             cout << "Invalid pos\n";
             return; 
@@ -124,7 +124,7 @@ class List{
         temp->next = newNode;
     }
 
-    void search(int target){
+    int search(int target){ // O(n)
         int idx = 0;
         Node* temp = head;
         while(temp!= NULL){
@@ -135,7 +135,7 @@ class List{
             idx++;
             temp = temp->next;
         }
-
+       return -1;
     }
 };
 
