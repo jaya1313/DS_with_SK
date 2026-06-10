@@ -101,16 +101,34 @@ class List{
     //     delete tail;
     //     tail = temp;
     // }
+
+    // add node at any place
+    void insert(int val, int pos){
+        if(pos < 0){
+            cout << "Invalid pos\n";
+            return; 
+        }
+        if(pos == 0){
+            push_front(val);
+            return;
+        }
+        Node *temp = head;
+        for(int i=0; i<pos-1; i++){
+            temp= temp->next;
+        }
+        Node *newNode = new Node(val);
+        newNode->next = temp->next;
+        temp->next = newNode;
+
+    }
 };
 
 int main(){
     List l1;
     l1.push_front(1);
-    l1.push_front(2);
-    l1.push_front(3);
+    l1.push_back(2);
+    l1.push_back(3);
     l1.push_back(4);
-    l1.push_back(5);
-    l1.pop_front();
-    l1.pop_back();
+    l1.insert(5,1);
     l1.print_all();
 }
