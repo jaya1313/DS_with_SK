@@ -60,6 +60,60 @@ class List{
         }
        return false;
     }
+
+    // if loop is there then return the value where loop starts and also remove it.
+    Node* detect(){
+        Node* slow = head;
+        Node* fast = head;
+        bool hasCycle = false;
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast){
+                hasCycle = true;
+            }
+        }
+        if(!hasCycle){
+            cout << "Linked list has no cycle"<< endl;
+            return 0;
+        }
+       slow = head;
+       while(slow != fast){
+        slow = slow->next;
+        Node* prev = fast;
+        fast = fast->next;
+       }
+       cout << "loop starts from: " << slow->data << endl;
+
+    }
+
+    Node* remove(){
+         Node* slow = head;
+        Node* fast = head;
+        Node* prev;
+        bool hasCycle = false;
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast){
+                hasCycle = true;
+            }
+        }
+        if(!hasCycle){
+            cout << "Linked list has no cycle"<< endl;
+            return 0;
+        }
+       slow = head;
+       while(slow != fast){
+        slow = slow->next;
+        prev = fast;
+        fast = fast->next;
+       }
+       prev->next = NULL;
+       cout << "hence cycle removed!" << endl;
+
+    }
+
 };
 
 int main(){
@@ -70,4 +124,6 @@ int main(){
     l1.push_back(4);
     l1.push_back(5);
     cout << l1.hasLoop();
+    l1.detect();
+    l1.remove();
 }
