@@ -9,12 +9,13 @@ void merge(vector<int> &arr,int st, int mid, int end){
     vector<int> temp;
     while(i<=mid && j<=end){
         if(arr[i] <= arr[j]){
-            temp.push_back(arr[i]);
+            temp.push_back(arr[i]);  
             i++;
         }
         else{
             temp.push_back(arr[j]);
             j++;
+            
         }
     }
     //left
@@ -31,7 +32,6 @@ void merge(vector<int> &arr,int st, int mid, int end){
         arr[idx + st] = temp[idx];
        } 
 
-        
 }
 
 void mergeSort(vector<int> &arr, int st, int end){
