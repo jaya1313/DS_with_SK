@@ -51,9 +51,11 @@ class List{
 
         if(head1-> data <= head2->data){
             head1->next = merge2Lists(head1->next, head2->next);
+            return head1;
         }
         else{
             head2->next = merge2Lists(head1, head2->next);
+            return head2;
         }
     }
 };
