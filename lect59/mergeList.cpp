@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 
-//Implementation of linked list
+//merge 2 sorted linked list
+// 21 on leetcode 
 
 class Node {
     public:
