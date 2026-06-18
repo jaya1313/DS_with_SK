@@ -72,6 +72,13 @@ class doublyList{
     if(head == NULL){
         return;
     }
+
+    if(head->next == NULL) {
+        delete head;
+        head = tail = NULL;
+        return;
+    }
+    
     Node* temp = head;
     while(temp->next != NULL){
         temp= temp->next;
