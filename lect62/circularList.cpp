@@ -1,29 +1,29 @@
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
-//circular linked list
+// //circular linked list
 
-class Node {
-    public:
-    int data;
-    Node* next;
+// class Node {
+//     public:
+//     int data;
+//     Node* next;
 
-    Node(int val){
-        data = val;
-        next = NULL;
-    }
-};
+//     Node(int val){
+//         data = val;
+//         next = NULL;
+//     }
+// };
 
-class List{
-    Node* head;
-    Node* tail;
+// class List{
+//     Node* head;
+//     Node* tail;
 
-    public:
-    List(){
-        head = tail = NULL;
-    }
-};
+//     public:
+//     List(){
+//         head = tail = NULL;
+//     }
+// };
 
-int main(){
+// int main(){
 
-}
+// }
