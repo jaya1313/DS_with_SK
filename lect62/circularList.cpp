@@ -14,16 +14,32 @@ class Node {
     }
 };
 
-class List{
+class circularList{
     Node* head;
     Node* tail;
 
     public:
-    List(){
+    circularList(){
         head = tail = NULL;
     }
+
+    //insert at head
+    void insertAtHead(int val){
+        Node* newNode = new Node(val);
+        if(head == NULL){
+            head = tail = newNode;
+            tail->next= head;
+        }
+        newNode->next = head;
+        head = newNode;
+        tail->next = head;
+    } 
+
 };
 
 int main(){
-
+    circularList cll;
+    cll.insertAtHead(1);
+    cll.insertAtHead(2);
+    cll.insertAtHead(3);
 }
