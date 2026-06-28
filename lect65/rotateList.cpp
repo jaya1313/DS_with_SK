@@ -13,25 +13,49 @@ using namespace std;
   };
 class Solution {
 public:
-    ListNode* rotateRight(ListNode* head, int k) {
+    // ListNode* rotateRight(ListNode* head, int k) {
 
-        if(head == NULL || head->next == NULL){
+    //     if(head == NULL || head->next == NULL){
+    //         return head;
+    //     }
+    //     int count =0;
+    //     while(count < k){
+    //     ListNode* temp = head;
+    //      ListNode* ttemp;
+    //     while(temp->next != NULL){
+    //         ttemp = temp;
+    //         temp = temp->next;
+    //     }
+    //      temp->next = head;
+    //      ttemp->next = NULL;
+    //      head = temp;
+    //      count++;
+    //     } 
+    //      return head;
+    // }
+
+    //optimised approch
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head == NULL || head->next == NULL || k==0){
             return head;
         }
-        int count =0;
-        while(count < k){
+        int count = 0;
         ListNode* temp = head;
-         ListNode* ttemp;
         while(temp->next != NULL){
-            ttemp = temp;
             temp = temp->next;
+            count++;
         }
-         temp->next = head;
-         ttemp->next = NULL;
-         head = temp;
-         count++;
-        } 
-         return head;
+        temp->next = head;
+        k=k%count;
+        int steps = count - k;
+        ListNode* ttemp = head;
+        for(int i=0; i<steps; i++){
+            ttemp = temp->next;
+        }
+        ListNode* newHead = ttemp->next;
+        ttemp->next = NULL;
+        return newHead;
     }
 };
 
