@@ -77,8 +77,13 @@ class Stack{
     }
 };
 
+// using c++ stl
+#include<stack>
+
 int main(){
-    Stack s;
+    //Stack s;
+    stack<int>s;
+
     s.push(10);
     s.push(20);
     s.push(30);
