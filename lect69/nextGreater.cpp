@@ -7,20 +7,18 @@ using namespace std;
 // find the next greater no. for each element
 vector<int> nextGreater(vector<int>& arr){
     stack<int> s;
-    vector<int> ans;
-    int NG;
-    for(int i = arr.size()-1; i>=0; i++){
+    vector<int> ans(arr.size());
+    for(int i = arr.size()-1; i>=0; i--){
         while(s.size() >0 && s.top() <= arr[i]){
             s.pop();
         }
         if(s.empty()){
-           NG = -1;
+          ans[i]= -1;
         }
         else{
-            NG = s.top();
+        ans[i] = s.top();
         }
         s.push(arr[i]);
-        ans.push_back(NG);
     }
     return ans;
 }
