@@ -46,7 +46,7 @@ void push(int val){
         minValue = val;
     }
     if(val < minValue){
-        s.push(2*val - minValue);
+        s.push(2*val - minValue); // formula for pushing if the value is less than the minimium value
         minValue = val;
     }
     else{
@@ -56,7 +56,7 @@ void push(int val){
 
 void pop(){
     if(s.top() < minValue){
-        minValue = 2*minValue - s.top();
+        minValue = 2*minValue - s.top(); // minimum value changes if the minimum val is popped from the stack
     }
     s.pop();
 }
