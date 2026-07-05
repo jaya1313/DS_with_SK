@@ -42,17 +42,19 @@ int getMin(){
 
 void push(int val){
     if(s.empty()){
-        s.push(val);
-        minValue = val;
+            s.push(val);
+            minValue = val;
+        }
+        else{
+           if(val < minValue){
+             s.push(2*val - minValue);
+             minValue = val;
+          }
+            else{
+               s.push(val);
+           }
+        }
     }
-    if(val < minValue){
-        s.push(2*val - minValue); // formula for pushing if the value is less than the minimium value
-        minValue = val;
-    }
-    else{
-        s.push(val);
-    }
-}
 
 void pop(){
     if(s.top() < minValue){
@@ -62,5 +64,14 @@ void pop(){
 }
 
 int top(){
-    return s.top();
+    if(s.top() < minValue){
+           return minValue;
+        }
+        else{
+            return s.top();
+        }
+}
+
+int minVal(){
+    return minValue;
 }
