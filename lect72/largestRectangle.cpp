@@ -15,7 +15,7 @@ int largestRectangle(vector<int> &height){
     stack<int> s;
 
     // right smaller
-    for(int i=n-1; i>=0; i--){
+    for(int i=n-1; i>=0; i--){  //O(n)
         while(s.size() > 0 && height[s.top()] >= height[i]){
             s.pop();
         }
@@ -28,7 +28,7 @@ int largestRectangle(vector<int> &height){
     }
 
     // left smaller
-    for(int i=0; i<n; i++){
+    for(int i=0; i<n; i++){  //O(n)
         while(s.size() > 0 && height[s.top()] >= height[i]){
             s.pop();
         }
@@ -37,13 +37,15 @@ int largestRectangle(vector<int> &height){
     }
 
     int ans =0;
-    for(int i=0; i<n;i++){
+    for(int i=0; i<n;i++){  //O(n)
         int width = right[i] - left[i] -1;
         int currArea = height[i] * width;
         ans = max(currArea, ans);
     }
     return ans;
 }
+
+// overall time complexity is O(n);
 
 int main(){
     vector<int> height={2,1,5,6,2,3};
