@@ -6,6 +6,8 @@
 #include<vector>
 using namespace std;
 
+// 84 on leetcode
+
 int largestRectangle(vector<int> &height){
     int n = height.size();
     vector<int> left(n,0);
@@ -30,7 +32,7 @@ int largestRectangle(vector<int> &height){
         while(s.size() > 0 && height[s.top()] >= height[i]){
             s.pop();
         }
-        left[i] = s.empty() ? -1 : s.top();
+        left[i] = s.empty() ? n : s.top();
         s.push(i);
     }
 
@@ -44,5 +46,7 @@ int largestRectangle(vector<int> &height){
 }
 
 int main(){
-
+    vector<int> height={2,1,5,6,2,3};
+    cout << largestRectangle(height);
+    return 0;
 }
