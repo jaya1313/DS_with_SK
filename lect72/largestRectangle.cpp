@@ -19,7 +19,7 @@ int largestRectangle(vector<int> &height){
         while(s.size() > 0 && height[s.top()] >= height[i]){
             s.pop();
         }
-        right[i] = s.empty() ? -1 : s.top();
+        right[i] = s.empty() ? n : s.top();
         s.push(i);
     }
 
@@ -32,7 +32,7 @@ int largestRectangle(vector<int> &height){
         while(s.size() > 0 && height[s.top()] >= height[i]){
             s.pop();
         }
-        left[i] = s.empty() ? n : s.top();
+        left[i] = s.empty() ? -1 : s.top();
         s.push(i);
     }
 
