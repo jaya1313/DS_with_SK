@@ -16,10 +16,13 @@ vector<int> nextGreaterII(vector<int>& arr){
             s.pop();
         }
         arr[i%n] = s.empty() ? -1 : arr[s.top()];
+        s.push(i%n);
     }
 
 }
 
 int main(){
+    vector<int> arr={3,6,5,4,2};
+    vector<int> nextGreaterII(arr);
     return 0;
 }
