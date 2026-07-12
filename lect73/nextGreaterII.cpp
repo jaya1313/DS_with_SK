@@ -11,14 +11,14 @@ vector<int> nextGreaterII(vector<int>& arr){
     int n = arr.size();
     stack<int> s;
     vector<int> ans(n,-1);
-    for(int i=2*n-1; i>=0; i++){
+    for(int i=2*n-1; i>=0; i--){
         while(s.size()>0 && arr[s.top()] <= arr[i%n]){
             s.pop();
         }
-        arr[i%n] = s.empty() ? -1 : arr[s.top()];
+        ans[i%n] = s.empty() ? -1 : arr[s.top()];
         s.push(i%n);
     }
-
+  return ans;
 }
 
 int main(){
