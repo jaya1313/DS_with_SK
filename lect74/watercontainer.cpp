@@ -4,6 +4,7 @@
 using namespace std;
 
 // trapping rainwater problem
+//42 on leetccode
 //better approach
 int trappingRainwater(vector<int> &height){
     int n = height.size();
@@ -23,4 +24,9 @@ int trappingRainwater(vector<int> &height){
     }
     return ans;
 
+}
+int main(){
+    vector<int> height={4,2,0,3,2,5};
+    cout << trappingRainwater(height);
+    return 0;
 }
