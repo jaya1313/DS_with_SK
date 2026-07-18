@@ -37,6 +37,15 @@ class Queue{
 
         }
         void pop(){
+            if(empty()){
+                cout << "Queue is empty";
+                return;
+            }
+            else{
+                Node* temp = head;
+                head = head->next;
+                delete temp;
+            }
 
         }
         int front(){
@@ -45,7 +54,7 @@ class Queue{
         bool empty(){
             return head == NULL;
         }
-}
+};
 
 int main(){
     return 0;
