@@ -34,12 +34,16 @@ class CircularQueue {
         }
 
         int front(){
-
+             if(empty()){
+                cout << "CQ is full";
+                return;
+            }
             return arr[f];
         }
 
         bool empty(){
-            
+            return currSize == 0;
+
         }
 };
 
