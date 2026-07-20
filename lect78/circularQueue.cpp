@@ -14,7 +14,33 @@ class CircularQueue {
             f=0;
             r=-1;
         }
-        void  push(int data);
+        void  push(int data){
+            if(currSize == cap){
+                cout << "CQ is full";
+                return;
+            }
+            r = (r+1) % cap;
+            arr[r] = data;
+            currSize++;
+        }
+
+        void pop(){
+            if(empty()){
+                cout << "CQ is full";
+                return;
+            }
+            f=(f+1) % cap;
+            currSize--;
+        }
+
+        int front(){
+
+            return arr[f];
+        }
+
+        bool empty(){
+            
+        }
 };
 
 int main(){
