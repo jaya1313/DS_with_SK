@@ -23,5 +23,7 @@ int uniqueChar(string s){
 }
 
 int main(){
+    string s = "level";
+    cout << uniqueChar(s);
     return 0;
 }
