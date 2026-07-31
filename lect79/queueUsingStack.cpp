@@ -3,6 +3,7 @@
 using namespace std;
 
 // implementation of queue using 2 stacks s1 and s2
+// 232 on leetcode
 
 class MyQueue {
 public:
