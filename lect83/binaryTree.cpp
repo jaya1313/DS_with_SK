@@ -7,6 +7,7 @@ using namespace std;
 // pre order traversal - root-left-right 
 
 class Node{
+    public:
     int data;
     Node* left;
     Node* right;
@@ -15,7 +16,17 @@ class Node{
         data = val;
         left = right = NULL;
     }
-};
+}; 
+
+static int idx = -1;
+Node* buildTree(vector<int> &preorder){
+    idx++;
+    Node* root = new Node(preorder[idx]);
+    root->left = buildTree(preorder);
+    root->right = buildTree(preorder);
+
+
+}
 
 int main(){
 
