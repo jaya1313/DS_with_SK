@@ -35,7 +35,7 @@ Node* buildTree(vector<int> &preorder){
 // preorder traversal
 // root, left, right
 
-void preOrder(Node* root){
+void preOrder(Node* root){   // time complexity = O(n)
     if (root == NULL){
         return;
     }
