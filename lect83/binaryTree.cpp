@@ -48,7 +48,12 @@ void preOrder(Node* root){   // time complexity = O(n)
 // left, root, right
 
 void inOrder(Node* root){
-    
+    if(root == NULL){
+        return;
+    }
+    inOrder(root->left);
+    cout << root->data;
+    inOrder(root->right);
 }
 
 int main(){
@@ -58,7 +63,8 @@ int main(){
     // cout << root->data << endl;
     // cout << root->left->data << endl;
     // cout << root->right->data << endl;
-    preOrder(root);
+    //preOrder(root);
+    inOrder(root);
     cout << endl;
     return 0;
 }
