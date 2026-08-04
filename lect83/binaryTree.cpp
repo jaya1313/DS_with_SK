@@ -44,6 +44,13 @@ void preOrder(Node* root){   // time complexity = O(n)
     preOrder(root->right);
 }
 
+// inorder traversal
+// left, root, right
+
+void inOrder(Node* root){
+    
+}
+
 int main(){
 
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
