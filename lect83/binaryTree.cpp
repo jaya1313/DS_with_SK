@@ -66,7 +66,7 @@ void postOrder(Node* root){
 
     postOrder(root->left);
     postOrder(root->right);
-    
+    cout << root->data<< " ";
 }
 
 int main(){
@@ -77,7 +77,8 @@ int main(){
     // cout << root->left->data << endl;
     // cout << root->right->data << endl;
     //preOrder(root);
-    inOrder(root);
+   // inOrder(root);
+    postOrder(root);
     cout << endl;
     return 0;
 }
