@@ -56,6 +56,19 @@ void inOrder(Node* root){
     inOrder(root->right);
 }
 
+// post order
+// left, right, root
+
+void postOrder(Node* root){
+    if(root == NULL){
+        return;
+    }
+
+    postOrder(root->left);
+    postOrder(root->right);
+    
+}
+
 int main(){
 
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
