@@ -90,6 +90,18 @@ void levelOrder(Node* root){
   cout << endl;
 }
 
+// line- wise level order traversal
+// prints the next line after each level finished
+
+void levelOrder2(Node* root){
+    queue<Node*> q;
+    q.push(root);
+    while(q.size() > 0){
+        Node* curr = q.front();
+        q.pop();
+}
+}
+
 
 int main(){
 
@@ -100,7 +112,8 @@ int main(){
     // cout << root->right->data << endl;
     //preOrder(root);
    // inOrder(root);
-    postOrder(root);
+    //postOrder(root);
+    levelOrder(root);
     cout << endl;
     return 0;
 }
