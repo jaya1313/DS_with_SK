@@ -75,10 +75,12 @@ void postOrder(Node* root){
 void levelOrder(Node* root){
     queue<Node*> q;
     q.push(root);
+
     while(q.size() > 0){
         Node* curr = q.front();
         q.pop();
         cout << curr->data << " ";
+
         if(curr->left != NULL){
             q.push(curr->left);
         }
@@ -96,9 +98,29 @@ void levelOrder(Node* root){
 void levelOrder2(Node* root){
     queue<Node*> q;
     q.push(root);
+    q.push(NULL);
+
     while(q.size() > 0){
         Node* curr = q.front();
         q.pop();
+        if(curr == NULL){
+            if(!q.empty()){
+                cout << endl;
+                q.push(NULL);
+                continue;
+            }
+            else{
+                break;
+            }
+        }
+        cout << curr->data << " ";
+
+        if(curr->left != NULL){
+            q.push(curr->left);
+        }
+        if(curr->right != NULL){
+            q.push(curr->right);
+        }
 }
 }
 
@@ -113,7 +135,8 @@ int main(){
     //preOrder(root);
    // inOrder(root);
     //postOrder(root);
-    levelOrder(root);
+    //levelOrder(root);
+    levelOrder2(root);
     cout << endl;
     return 0;
 }
