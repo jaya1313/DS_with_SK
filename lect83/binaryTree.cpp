@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 using namespace std;
 
 // implementation of binary tree 
@@ -68,6 +69,18 @@ void postOrder(Node* root){
     postOrder(root->right);
     cout << root->data<< " ";
 }
+
+// level-order traversal 
+//(printing every node at each level)
+void levelOrder(Node* root){
+    queue<Node*> q;
+    q.push(root);
+    while(q.size() > 0){
+        
+    }
+
+}
+
 
 int main(){
 
