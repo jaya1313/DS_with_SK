@@ -39,6 +39,15 @@ int height(Node* root){
     return max(leftHt, rightHt)+1; 
 }
 
+//counting the number of nodes 
+int count(Node* root){
+    if(root == NULL){
+        return 0;
+    }
+    int leftCount = count(root->left);
+    int rightCount = count(root->right);
+    return leftCount + rightCount+1; 
+}
 
 
 int main(){
@@ -46,6 +55,7 @@ int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     Node* root = buildTree(preorder);
     cout << height(root);
+    cout << count(root);
     return 0;
 
 }
