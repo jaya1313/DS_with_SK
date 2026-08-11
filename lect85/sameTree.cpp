@@ -28,6 +28,18 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
+// finding identical tree
+// 100 on leetcode
+
+bool isIdentical(Node* p, Node* q){
+    if(p == NULL || q == NULL){
+        return p==q;
+    }
+    bool leftSame = isIdentical(p->left, q->left);
+    bool rightSame = isIdentical(p->right, q->right);
+
+}
+
 int main(){
 
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
