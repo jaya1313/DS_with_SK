@@ -40,6 +40,15 @@ bool isIdentical(Node* p, Node* q){
     return leftSame && rightSame && p->data == q->data;
 
 }
+// finding subtree
+//572 on leetcode
+
+bool isSubtree(Node* p, Node* q){
+    if(p == NULL || q == NULL){
+        return p==q;
+    }
+    
+}
 
 int main(){
 
