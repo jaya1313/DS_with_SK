@@ -61,7 +61,8 @@ int main(){
 
     idx = 0;
     Node* q = buildTree(preorder);
-    cout << isIdentical(p,q);
+    //cout << isIdentical(p,q);
+    cout << isSubtree(p,q);
     return 0;
 
 }
