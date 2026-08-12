@@ -47,7 +47,10 @@ bool isSubtree(Node* p, Node* q){
     if(p == NULL || q == NULL){
         return p==q;
     }
-    
+    if(p->data == q->data && isIdentical(p,q)){
+        return true;
+    }
+    return isSubtree(p->left,q) || isSubtree(p->right, q);
 }
 
 int main(){
