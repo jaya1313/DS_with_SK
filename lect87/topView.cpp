@@ -40,16 +40,25 @@ void topView(Node* root){
         Node* curr = q.front().first;
         int currHD = q.front().second;
         q.pop();
-        cout << curr->data << " ";
+
+        if(m.find(currHD) == m.end()){
+            m[currHD] = curr->data;
+        }
 
         if(curr->left != NULL){
-            q.push(curr->left);
+            q.push({curr->left, currHD-1});
         }
         if(curr->right != NULL){
-            q.push(curr->right);
+            q.push({curr->right, currHD+1});
         }
 
     }
+
+    for(auto it : m){
+        cout << it.second << " ";
+    }
+
+    cout << endl;
 }
 
 int main(){
