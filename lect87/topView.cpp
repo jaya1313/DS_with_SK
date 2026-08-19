@@ -31,7 +31,7 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
-void topView(Node* root){
+void topView(Node* root){   // t(n) = O(nlogn)
     queue<pair<Node*,int>> q;
     q.push({root, 0});
     map<int, int> m;
@@ -65,6 +65,6 @@ int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     Node* root = buildTree(preorder);
     topView(root);
-    
+
     return 0;
 }
