@@ -31,6 +31,16 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
+void kthLevel(Node* root, int k){
+    if(root == NULL){
+        return;
+    }
+    if(k==1){
+        cout << root->data << endl;
+        return;
+    }
+}
+
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     Node* root = buildTree(preorder);
