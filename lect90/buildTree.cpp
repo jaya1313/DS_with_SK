@@ -31,7 +31,11 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
-
+int buildTree2(){
+    if(left < right){
+        return NULL;
+    }
+}
 
 
 int main(){
