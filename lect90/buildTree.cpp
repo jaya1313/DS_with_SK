@@ -27,12 +27,12 @@ int search(vector<int> &inorder, int left, int right, int val){
     return -1;
 }
 
-Node* buildTree2(vector<int> &preorder, vector<int> &inorder, int preIdx, int left, int right){
-    if(left < right){
+Node* buildTree2(vector<int> &preorder, vector<int> &inorder, int &preIdx, int left, int right){
+    if(left > right){
         return NULL;
     }
 
-    Node* root = preorder[preIdx];
+    Node* root = new Node(preorder[preIdx]);
     int inIdx = search(inorder, left, right, preorder[preIdx]);
     preIdx++;
 
