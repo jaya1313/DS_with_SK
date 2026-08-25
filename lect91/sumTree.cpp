@@ -4,7 +4,8 @@
 #include<map>
 using namespace std;
 
-// convert the node by summation of its (root->val + root->lefts->val + root->rights->val)
+// convert the node of binary tree by summation of 
+//its (root->val + root->lefts->val + root->rights->val)
 class Node{
     public:
     int data;
@@ -30,15 +31,22 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
-Node* sumTree(Node* root){
+int sumTree(Node* root){
      
     if(root==NULL){
        return 0;
     }
 
-    Node* leftSum = sumTree(root->left);
-    Node* rightSum = sumTree(root->left);
+    int leftSum = sumTree(root->left);
+    int rightSum = sumTree(root->right);
     root->data += leftSum + rightSum;
 
   return root->data;
+}
+
+int main(){
+    vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
+    Node* root = buildTree(preorder);
+   cout << sumTree(root);
+    return 0;
 }
