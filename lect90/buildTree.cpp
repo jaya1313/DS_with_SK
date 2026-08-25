@@ -18,28 +18,37 @@ class Node{
     }
 };
 
-static int idx = -1;
-Node* buildTree(vector<int> &preorder){
-    idx++;
-    if(preorder[idx] == -1){
-        return NULL;
+int search(vector<int> &inorder, int left, int right, int val){
+    for(int i=left; i<= right; i++){
+        if(inorder[i] == val){
+            return i;
+        }
     }
-    Node* root = new Node(preorder[idx]);
-    root->left = buildTree(preorder);
-    root->right = buildTree(preorder);
-
-    return root;
+    return -1;
 }
 
-int buildTree2(){
+Node* buildTree2(vector<int> &preorder, vector<int> &inorder, int preIdx, int left, int right){
     if(left < right){
         return NULL;
     }
+
+    Node* root = preorder[preIdx];
+    int inIdx = search(inorder, left, right, preorder[preIdx]);
+    preIdx++;
+
+    root->left = buildTree2(preorder, inorder, preIdx, left, inIdx-1);
+    root->right = buildTree2(preorder, inorder, preIdx, inIdx+1, right);
+
+    return root;
+
 }
 
 
 int main(){
-    vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
-    Node* root = buildTree(preorder);
+    vector<int> preorder = {3,9,20,15,7};
+    vector<int> inorder = {9,3,15,20,7};
+    int preIdx = 0;
+    Node* root = buildTree2(preorder, inorder, preIdx, 0, preorder.size()-1);
+    cout << endl;
     return 0;
 }
