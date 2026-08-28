@@ -32,10 +32,32 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
-vector<int> treePaths(Node* root){
+
+     void allpaths(Node* root, string path, vector<string> &ans){
+        if(root->left == NULL && root->right == NULL){
+            ans.push_back(path);
+            return;
+        }
+
+        if(root->left){
+            allpaths(root->left, path+"->"+to_string(root->left->val), ans);
+        }
+
+         if(root->right){
+            allpaths(root->right, path+"->"+to_string(root->right->val), ans);
+        }
+    }
+
+    vector<string> binaryTreePaths(Node* root) {
+        vector<string> ans;
+        string path = to_string(root->data);
+
+        allpaths(root, path, ans);
+        return ans;
+    }
       
     
-}
+
 
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
