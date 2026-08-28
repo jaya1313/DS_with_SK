@@ -40,11 +40,11 @@ Node* buildTree(vector<int> &preorder){
         }
 
         if(root->left){
-            allpaths(root->left, path+"->"+to_string(root->left->val), ans);
+            allpaths(root->left, path+"->"+to_string(root->left->data), ans);
         }
 
          if(root->right){
-            allpaths(root->right, path+"->"+to_string(root->right->val), ans);
+            allpaths(root->right, path+"->"+to_string(root->right->data), ans);
         }
     }
 
@@ -62,5 +62,6 @@ Node* buildTree(vector<int> &preorder){
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     Node* root = buildTree(preorder);
+    binaryTreePaths(root);
     return 0;
 }
