@@ -30,3 +30,21 @@ Node* buildTree(vector<int> &preorder){
 
     return root;
 }
+
+vector<int> inorder(Node* root){
+    Node* curr = root;
+    vector<int> ans;
+
+    while(curr != NULL){
+        if(curr->left == NULL){
+            ans.push_back(root->data);
+            curr = curr->right;
+        }
+        else{
+            Node* ip = curr->left;
+            while(ip->right != NULL && ip->right != curr){
+                
+            }
+        }
+    }
+}
