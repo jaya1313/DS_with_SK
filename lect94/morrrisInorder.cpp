@@ -43,7 +43,17 @@ vector<int> inorder(Node* root){
         else{
             Node* ip = curr->left;
             while(ip->right != NULL && ip->right != curr){
-                
+                ip=ip->right;
+            }
+
+            if(ip->right == NULL){
+                ip->right = curr;
+                curr = curr->left;
+            }
+            else{
+                ip->right = NULL;
+                ans.push_back(curr->data);
+                curr = curr->right;
             }
         }
     }
