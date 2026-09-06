@@ -31,25 +31,19 @@ Node* buildTree(vector<int> &preorder){
     return root;
 }
 
+ Node* nextRight = NULL;
 
+    void flatten(Node* root) {
 
-// class Solution {
-// public:
+        if(root==NULL){
+            return;
+        }
 
-//      TreeNode* nextRight = NULL;
+        flatten(root->right);
+        flatten(root->left);
 
-//     void flatten(TreeNode* root) {
-
-//         if(root==NULL){
-//             return;
-//         }
-
-//         flatten(root->right);
-//         flatten(root->left);
-
-//         root->left = NULL;
-//         root->right = nextRight;
-//         nextRight = root;
+        root->left = NULL;
+        root->right = nextRight;
+        nextRight = root;
         
-//     }
-// };
+    }
