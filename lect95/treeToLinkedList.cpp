@@ -4,7 +4,8 @@
 #include<map>
 using namespace std;
 
-// morris inorder tree traversal
+// flatten a binary tree into linked list
+//114 on leetcode
 
 class Node{
     public:
@@ -46,4 +47,10 @@ Node* buildTree(vector<int> &preorder){
         root->right = nextRight;
         nextRight = root;
         
+    }
+
+    int main(){
+         vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
+         Node* root = buildTree(preorder);
+         flatten(root);
     }
