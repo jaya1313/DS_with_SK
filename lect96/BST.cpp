@@ -34,3 +34,31 @@ Node* insertion(Node* root, int val){
 
     return root;
 }
+
+Node* buildBST(vector<int> &arr){
+    Node* root = NULL;
+
+    for(int val: arr){
+        root = insertion(root, val);
+    }
+    return root;
+}
+
+void inorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->left);
+}
+
+int main(){
+    vector<int> arr={3,2,1,5,6,4};
+    Node* root = buildBST(arr);
+    inorder(root);
+    cout << endl;
+
+    return 0;
+}
