@@ -20,3 +20,17 @@ class Node{
 
 // Insertion of nodes in BST
 
+Node* insertion(Node* root, int val){
+    if(root == NULL){
+        return new Node(val);
+    }
+
+    if(val < root->data){
+        root->left = insertion(root->left, val);
+    }
+    else{
+        root->right = insertion(root->right, val);
+    }
+
+    return root;
+}
