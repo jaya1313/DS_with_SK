@@ -116,9 +116,17 @@ void inorder(Node* root){
 int main(){
     vector<int> arr={3,2,1,5,6,4};
     Node* root = buildBST(arr);
-    // inorder(root);
-    // cout << endl;
-    cout << search(root, 5);
+    cout << "before : ";
+    inorder(root);
+    cout << endl;
+
+    delNode(root, 6);
+
+     cout << "After : ";
+    inorder(root);
+    cout << endl;
+
+    // cout << search(root, 5);
 
     return 0;
 }
