@@ -53,6 +53,47 @@ bool search(Node* root, int key){
     }
 }
 
+Node* getInorderSuccessor(Node* root){ // leftmost node in right subtree
+    while(root != NULL && root->left != NULL){
+        root=root->left;
+    }
+    return root;
+}
+
+Node* delNode(Node* root, int key){
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(key < root->data){
+        root->left = delNode(root->left, key);
+    }
+    else if(key > root->data){
+        root->right = delNode(root->right, key);
+    }
+
+    else{
+        if(root->left == NULL){
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if(root->right == NULL){
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        else{
+
+            Node* IS = getInorderSuccessor(root->right);
+            root->data = IS->data;
+            root->right = delNode(root->right, IS->data);  
+            
+        }
+    }
+    return root;
+}
+
 Node* buildBST(vector<int> &arr){
     Node* root = NULL;
 
