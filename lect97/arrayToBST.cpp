@@ -46,7 +46,36 @@ Node* buildBST(vector<int> &arr){
     return root;
 }
 
+void inorder(Node* root){
+    if(root == NULL){
+        return;
+    }
+
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+
+Node* arraytoBST(vector<int> &arr, int st, int end){
+    
+    if(st > end){
+        return NULL;
+    }
+    int mid = st + (end-st)/2;
+
+    Node* root = new Node(arr[mid]);
+    root->left = arraytoBST(arr, st, mid-1);
+    root->right = arraytoBST(arr, mid+1, end);
+
+    return root;
+}
+
 int main(){
-    vector<int> arr={3,2,1,5,6,4};
+    vector<int> arr={-10,-3,0,4,5,6};
     Node* root = buildBST(arr);
+
+    arraytoBST(arr, 0, 5);
+    inorder(root);
+    cout << endl;
+    
 }
