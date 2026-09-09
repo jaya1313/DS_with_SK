@@ -56,17 +56,17 @@ void inorder(Node* root){
 }
 
 
-// bool helper(TreeNode* root, TreeNode* min, TreeNode* max){
-//         if(root == NULL){
-//             return true;
-//         }
-//         if(min!=NULL && root->val <= min->val){
-//             return false;
-//         }
+bool helper(Node* root, Node* min, Node* max){
+        if(root == NULL){
+            return true;
+        }
+        if(min!=NULL && root->data <= min->data){
+            return false;
+        }
 
-//          if(max!=NULL && root->val >= max->val){
-//             return false;
-//         }
+         if(max!=NULL && root->data >= max->data){
+            return false;
+        }
 
-//         return helper(root->left, min, root) && helper(root->right, root, max);
-//     }
+        return helper(root->left, min, root) && helper(root->right, root, max);
+    }
