@@ -2,20 +2,23 @@
 #include<vector>
 #include<queue>
 #include<map>
+#include<climits>
 using namespace std;
 
 // Binary Search Tree
-// validate a BST
-// 98 on leetcode
+// Finding minimum distance between the nodes of BST
+//  on leetcode
 class Node{
     public:
     int data;
     Node* left;
     Node* right;
+    
 
     Node(int val){
         data = val;
         left = right = NULL;
+        
     }
 };
 
@@ -44,3 +47,29 @@ Node* buildBST(vector<int> &arr){
     }
     return root;
 }
+
+int ans = INT_MAX;
+
+
+int minDist(Node* root,Node* &prev){
+    if(root==NULL){
+        return INT_MAX;
+    }
+
+    if(root->left){
+        int leftMin = minDist(root->left, prev);
+        ans = min(ans,leftMin);
+    }
+
+    if(prev != NULL){
+        ans = min(ans, root->data - prev->data);
+    }
+    prev = root;
+
+    if(root->right){
+        int rightMin = minDist(root->right, prev);
+        ans = min(ans, rightMin);
+    }
+ return ans;
+}
+
