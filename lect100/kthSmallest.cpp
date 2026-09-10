@@ -6,8 +6,8 @@
 using namespace std;
 
 // Binary Search Tree
-// Finding minimum distance between the nodes of BST
-//  on leetcode
+// Finding kth smallest val in BST
+// 230 on leetcode
 class Node{
     public:
     int data;
@@ -46,4 +46,32 @@ Node* buildBST(vector<int> &arr){
         root = insertion(root, val);
     }
     return root;
+}
+
+int order = 0;
+
+int kthSmallest(Node* root, int k){
+     if(root==NULL){
+        return -1;
+     }
+
+     if(root->left){
+        int leftAns = kthSmallest(root->left, k);
+        if(leftAns != -1){
+            return leftAns;
+        }
+     }
+
+     if(order+1 == k){
+        return root->data;
+     }
+     order+=1;
+
+     if(root->right){
+        int rightAns = kthSmallest(root->right, k);
+        if(rightAns != -1){
+            return rightAns;
+        }
+     }
+     return -1;
 }
