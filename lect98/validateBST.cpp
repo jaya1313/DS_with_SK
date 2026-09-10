@@ -56,7 +56,7 @@ void inorder(Node* root){
 }
 
 
-bool helper(Node* root, Node* min, Node* max){
+bool validateBST(Node* root, Node* min, Node* max){
         if(root == NULL){
             return true;
         }
@@ -68,5 +68,13 @@ bool helper(Node* root, Node* min, Node* max){
             return false;
         }
 
-        return helper(root->left, min, root) && helper(root->right, root, max);
+        return validateBST(root->left, min, root) && validateBST(root->right, root, max);
     }
+
+     int main(){
+         vector<int> arr={-10,-3,0,4,5,6};
+         Node* root = buildBST(arr);
+         cout << validateBST(root, NULL, NULL); 
+
+        return 0;
+     }
