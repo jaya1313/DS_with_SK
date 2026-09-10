@@ -73,3 +73,11 @@ int minDist(Node* root,Node* &prev){
  return ans;
 }
 
+int main(){
+         vector<int> arr={-10,-3,0,4,5,6};
+         Node* root = buildBST(arr);
+         Node* prev = NULL;
+         cout << minDist(root, prev);
+
+        return 0;
+     }
