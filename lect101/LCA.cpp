@@ -48,6 +48,17 @@ Node* buildBST(vector<int> &arr){
     return root;
 }
 
+// Helper function to find a pointer to a specific node in the BST
+Node* findNode(Node* root, int val) {
+    if (root == NULL || root->data == val) {
+        return root;
+    }
+    if (val < root->data) {
+        return findNode(root->left, val);
+    }
+    return findNode(root->right, val);
+}
+
 Node* LCA(Node* root, Node* p, Node* q){
     if(root == NULL){
         return NULL;
@@ -65,4 +76,23 @@ Node* LCA(Node* root, Node* p, Node* q){
         return root;
     }
 
+}
+
+int main() {
+    vector<int> arr = {0, -10, 5, -3, 4, 6};
+    Node* root = buildBST(arr);
+
+    // Get pointers to nodes with values 4 and 6
+    Node* p = findNode(root, 4);
+    Node* q = findNode(root, 6);
+
+    Node* lcaNode = LCA(root, p, q);
+
+    if (lcaNode != NULL) {
+        cout << "LCA of " << p->data << " and " << q->data << " is: " << lcaNode->data << endl;
+    } else {
+        cout << "LCA does not exist." << endl;
+    }
+
+    return 0;
 }
