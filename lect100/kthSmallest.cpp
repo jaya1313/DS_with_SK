@@ -75,3 +75,12 @@ int kthSmallest(Node* root, int k){
      }
      return -1;
 }
+
+int main(){
+         vector<int> arr={-10,-3,0,4,5,6};
+         Node* root = buildBST(arr);
+         int k = 2;
+         cout << kthSmallest(root, k);
+
+        return 0;
+     }
