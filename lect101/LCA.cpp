@@ -68,7 +68,7 @@ Node* LCA(Node* root, Node* p, Node* q){
         return LCA(root->left, p, q);
     }
 
-     if(root->data < p->data && root->data < q->data){  //left subtree
+    else if(root->data < p->data && root->data < q->data){  //left subtree
         return LCA(root->right, p, q);
     }
 
