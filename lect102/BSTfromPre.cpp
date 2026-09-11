@@ -22,3 +22,17 @@ class Node{
     }
 };
  
+Node* helper(vector<int> &preorder, int i, int upperbound){
+
+    if(i>=preorder.size() || preorder[i] > upperbound){
+        return NULL;
+    }
+
+    Node* root = new Node(preorder[i]);
+    i++;
+
+    root->left = helper(preorder, i, root->data);
+    root->right = helper(preorder, i, upperbound);
+
+    return root;
+}
