@@ -108,5 +108,14 @@ int main(){
 
      Node* root = merge2BST(root1, root2);
 
+     // printing inorder of merged tree
+     vector<int> seq;
+     inorder(root, seq);
+
+     for(int v : seq){
+        cout << v << " ";
+     }
+     cout << endl;
+
     return 0;
 }
