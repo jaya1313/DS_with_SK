@@ -22,7 +22,7 @@ class Node{
     }
 };
  
-Node* helper(vector<int> &preorder, int i, int upperbound){
+Node* helper(vector<int> &preorder, int &i, int &upperbound){
 
     if(i>=preorder.size() || preorder[i] > upperbound){
         return NULL;
@@ -35,4 +35,20 @@ Node* helper(vector<int> &preorder, int i, int upperbound){
     root->right = helper(preorder, i, upperbound);
 
     return root;
+}
+
+Node* buildBSTfromPreorder(vector<int> &preorder){
+    int i=0;
+    int upperbound = INT_MAX;
+    return helper(preorder, i, upperbound);
+}
+
+int main(){
+     vector<int> preorder = {6, 3, 1, 4, 8, 9};
+
+     Node* root = buildBSTfromPreorder(preorder);
+
+     cout << "root : " << root->data << endl;
+
+     
 }
