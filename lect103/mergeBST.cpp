@@ -45,11 +45,28 @@ Node* buildBST(vector<int> &arr){
     return root;
 }
 
-vector<int> inorder(Node* root, vector<int> &arr){
+void inorder(Node* root, vector<int> &arr){
+
+    if(root == NULL){
+        return;
+    }
 
     inorder(root->left, arr);
     arr.push_back(root->data);
     inorder(root->right, arr);
+}
+
+Node* buildBSTfromSorted(vector<int> &temp, int st, int end){
+    
+    if(st > end){
+        return NULL;
+    }
+    int mid = st+ (end-st)/2;
+    Node* root = new Node(temp[mid]);
+    root->left = buildBSTfromSorted(temp,st,mid-1);
+    root->right = buildBSTfromSorted(temp, mid+1, end);
+
+    return root;
 }
 
 Node* merge2BST( Node* root1,  Node* root2){
@@ -77,7 +94,7 @@ Node* merge2BST( Node* root1,  Node* root2){
         temp.push_back(arr2[j++]);
      }
     
-     //return buildBSTfromSorted(temp,0,temp.size()-1);
+     return buildBSTfromSorted(temp,0,temp.size()-1);
      
     
 } 
