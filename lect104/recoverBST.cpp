@@ -5,6 +5,9 @@
 #include<climits>
 using namespace std;
 
+// recover BST -> swap the 2 nodes which are wrongly placed
+// 99 on leetcode
+
 class Node{
     public:
     int data;
@@ -41,4 +44,14 @@ Node* buildBST(vector<int> &arr){
         root = insertion(root, val);
     }
     return root;
+}
+
+int main(){
+
+    vector<int> preorder = {1, 3, 8, 6, 4, 9};
+    Node* root = buildBST(preorder);
+
+    
+
+    return 0;
 }
