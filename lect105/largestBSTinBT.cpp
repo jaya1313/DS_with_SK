@@ -6,7 +6,7 @@
 using namespace std;
 
 // largest BST in Binary tree(BT)
-// 99 on leetcode
+// t(n) = O(n)
 
 class Node{
     public:
@@ -64,4 +64,6 @@ int main(){
     root->left->left = new Node(1);
     root->left->right = new Node(8);
     root->right->right = new Node(7);
+
+    cout << largestBSTinBT(root) << endl;
 }
