@@ -10,6 +10,8 @@ using namespace std;
 // with the help of level order traversal
 // 116 on leetcode.
 
+// time complexity = O(n)
+
 class Node{
     public:
     int data;
@@ -40,6 +42,11 @@ Node* buildTree(vector<int> &preorder){
 }
 
 Node* connect(Node* root){
+
+     if(root == NULL){
+        return NULL;
+    }
+
 
     queue<Node*> q;
     q.push(root);
@@ -80,6 +87,12 @@ Node* connect(Node* root){
 
 
 int main() {
-    vector<int> arr = {1, 2, 4, 5, 3, 6, 7};
+    vector<int> arr = {1, 
+          2, 4, -1, -1, 5, -1, -1, 
+          3, 6, -1, -1, 7, -1, -1};
     Node* root = buildTree(arr);
+
+    root = connect(root);
+
+    cout << root->data << endl;
 }
