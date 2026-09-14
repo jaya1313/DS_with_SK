@@ -5,6 +5,11 @@
 #include<climits>
 using namespace std;
 
+// given a complete binary tree with each node having its next pointer
+// you have to assign the next pointer to its right node at each level
+// with the help of level order traversal
+// 116 on leetcode.
+
 class Node{
     public:
     int data;
@@ -19,28 +24,22 @@ class Node{
     }
 };
 
-// Insertion of nodes in BST
-
-Node* insertion(Node* root, int val){
-    if(root == NULL){
-        return new Node(val);
+static int idx = -1;
+Node* buildTree(vector<int> &preorder){
+    idx++;
+    if(preorder[idx] == -1){
+        return NULL;
     }
-
-    if(val < root->data){
-        root->left = insertion(root->left, val);
-    }
-    else{
-        root->right = insertion(root->right, val);
-    }
+    Node* root = new Node(preorder[idx]);
+    root->left = buildTree(preorder);
+    root->right = buildTree(preorder);
 
     return root;
+
 }
 
-Node* buildBST(vector<int> &arr){
-    Node* root = NULL;
 
-    for(int val: arr){
-        root = insertion(root, val);
-    }
-    return root;
+int main() {
+    vector<int> arr = {1, 2, 4, 5, 3, 6, 7};
+    Node* root = buildTree(arr);
 }
