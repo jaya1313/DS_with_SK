@@ -45,6 +45,8 @@ Node* buildBST(vector<int> &arr){
     }
     return root;
 }
+// O(1) time comple
+// O(h) space compl  h=height of tree
 
 class BSTIterator{
 
@@ -81,4 +83,14 @@ class BSTIterator{
 int main() {
     vector<int> arr = {7, 3, 2, 15, 9, 20};
     Node* root = buildBST(arr);
+
+    BSTIterator iterator(root);
+
+    cout << "BST Inorder Traversal:" << endl;
+    while(iterator.isNext()){
+        cout << iterator.next() << " ";
+    }
+    cout << endl;
+
+    return 0;
 }
