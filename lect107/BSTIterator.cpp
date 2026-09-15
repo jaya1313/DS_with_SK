@@ -3,7 +3,7 @@
 #include<iostream>
 #include<vector>
 #include<queue>
-#include<map>
+#include<stack>
 #include<climits>
 using namespace std;
 
@@ -46,7 +46,39 @@ Node* buildBST(vector<int> &arr){
     return root;
 }
 
+class BSTIterator{
+
+  public:
+    
+    stack<Node*> s;
+    void storeLeftNodes(Node* root){
+        while(root!=NULL){
+            s.push(root);
+            root=root->left;
+        }
+    }
+
+    BSTIterator(Node* root){
+        storeLeftNodes(root);
+    }
+
+    int next(){
+        Node* ans = s.top();
+        s.pop();
+
+        if(ans->right){
+            storeLeftNodes(ans->right);
+        }
+        return ans->data;
+    }
+
+    bool isNext(){
+        return s.size() > 0;
+    }
+
+};
+
 int main() {
-    vector<int> arr = {0, -10, 5, -3, 4, 6};
+    vector<int> arr = {7, 3, 2, 15, 9, 20};
     Node* root = buildBST(arr);
 }
