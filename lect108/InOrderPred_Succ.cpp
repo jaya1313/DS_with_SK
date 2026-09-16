@@ -63,6 +63,9 @@ Node* leftMostInRight(Node* curr){
     return ans;
 }
 
+// O(h) time h=height of tree 
+// O(1) space
+
 vector<int> getPredSucc(Node* root, int key){
     Node* curr = root;
     Node* pred = NULL;
@@ -70,12 +73,12 @@ vector<int> getPredSucc(Node* root, int key){
     
     while(curr != NULL){
         if(key < curr->data){
-            pred = curr;
+            succ = curr;
             curr=curr->left;
         }
 
         else if(key > curr->data){
-            succ = curr;
+            pred = curr;
             curr = curr->right;
         }
 
@@ -90,10 +93,17 @@ vector<int> getPredSucc(Node* root, int key){
             break;
         }
     }
+
+    return {pred->data, succ->data};
 }
 
 
 int main(){
      vector<int> arr = {6, 4, 1, 5, 8, 7, 9};
      Node* root = buildBST(arr);
+
+     int key = 7;
+     vector<int> ans = getPredSucc(root, key);
+     cout << "predecessor: " << ans[0] << endl;
+     cout << "successor: " << ans[1] << endl;
 }
