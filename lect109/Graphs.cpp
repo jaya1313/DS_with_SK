@@ -23,7 +23,7 @@ public:
 
     void printAdjlist(){
         for(int i=0; i<V; i++){
-            cout << i << ":";
+            cout << i << ": ";
             for(int neighbor : l[i]){
                 cout << neighbor << " ";
             }
@@ -34,5 +34,14 @@ public:
 };
 
 int main(){
+
+    Graph g(5);
+    g.addEdge(0,1);
+    g.addEdge(1,2);
+    g.addEdge(1,3);
+    g.addEdge(2,3);
+    g.addEdge(2,4);
+    g.printAdjlist();
+
     return 0;
 }
