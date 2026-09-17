@@ -17,6 +17,18 @@ public:
     
     void addEdge(int u, int v){
 
+        l[u].push_back(v);
+        l[v].push_back(u);
+    }
+
+    void printAdjlist(){
+        for(int i=0; i<V; i++){
+            cout << i << ":";
+            for(int neighbor : l[i]){
+                cout << neighbor << " ";
+            }
+            cout << endl;
+        }
     }
       
 };
