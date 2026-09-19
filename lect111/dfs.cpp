@@ -21,14 +21,35 @@ public:
         l[v].push_back(u);
     }
 
-    void printAdjlist(){
-        for(int i=0; i<V; i++){
-            cout << i << ": ";
-            for(int neighbor : l[i]){
-                cout << neighbor << " ";
+    void dfsHelper(int u, vector<bool> &vis){
+          cout << u << " ";
+          vis[u] = true;
+
+          for(int v : l[u]){
+            if(!vis[v]){
+                dfsHelper(v, vis);
             }
-            cout << endl;
-        }
+          }
+    }
+
+    void dfs(){
+        int u = 0;
+        vector<bool> vis(V, false);
+
+        
     }
       
 };
+
+int main(){
+
+    Graph g(5);
+    g.addEdge(0,1);
+    g.addEdge(1,2);
+    g.addEdge(1,3);
+    g.addEdge(2,3);
+    g.addEdge(2,4);
+    g.printAdjlist();
+
+    return 0;
+}
