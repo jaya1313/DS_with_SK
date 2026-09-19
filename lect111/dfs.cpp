@@ -36,6 +36,11 @@ public:
         int u = 0;
         vector<bool> vis(V, false);
 
+        for(int i=0; i<V; i++){  // for all vertices(multiple source points)
+            if(!vis[i]){
+                dfsHelper(i, vis);
+            }
+        }
         
     }
       
@@ -47,9 +52,8 @@ int main(){
     g.addEdge(0,1);
     g.addEdge(1,2);
     g.addEdge(1,3);
-    g.addEdge(2,3);
     g.addEdge(2,4);
-    g.printAdjlist();
+    g.dfs();
 
     return 0;
 }
