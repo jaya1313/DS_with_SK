@@ -21,35 +21,36 @@ public:
         l[v].push_back(u);
     }
 
-    bool dfsHelper(int u, vector<bool> &vis, int parent){
-          cout << u << " ";
-          vis[u] = true;
+    bool isCycleUndirDFS(int src, vector<bool> &vis, int parent){  // O(V+E)
+          
+          vis[src] = true;
+          list<int> neighbors = l[src]; 
 
-          for(int v : l[u]){
+          for(int v : neighbors){
             if(!vis[v]){
-                if(dfsHelper(v, vis, parent)){
+                if(isCycleUndirDFS(v, vis, parent)){
                    return true;
                 }
             }
-            else{
-                if(v!=parent){
+            else if(v!=parent){
                     return true;
                 }
-            }
           }
           return false;
     }
 
-    void dfs(){
+    bool isCycle(){
         int u = 0;
         vector<bool> vis(V, false);
 
         for(int i=0; i<V; i++){  // for all vertices(multiple source points)
             if(!vis[i]){
-                dfsHelper(i, vis, 0);
+               if(isCycleUndirDFS(i, vis, -1)){
+                return true;
+               }
             }
         }
-        
+        return false;
     }
       
 };
@@ -62,7 +63,8 @@ int main(){
     g.addEdge(0,3);
     g.addEdge(1,2);
     g.addEdge(3,4);
-    g.dfs();
+
+    cout << g.isCycle() << endl;
 
     return 0;
 }
