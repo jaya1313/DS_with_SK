@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-// New Chapter: Graphs
+// detect a cycle in graph using dfs traversal
 
 class Graph{
     int V;  // no. of vertices of graph
@@ -21,15 +21,23 @@ public:
         l[v].push_back(u);
     }
 
-    void dfsHelper(int u, vector<bool> &vis){
+    bool dfsHelper(int u, vector<bool> &vis, int parent){
           cout << u << " ";
           vis[u] = true;
 
           for(int v : l[u]){
             if(!vis[v]){
-                dfsHelper(v, vis);
+                if(dfsHelper(v, vis, parent)){
+                   return true;
+                }
+            }
+            else{
+                if(v!=parent){
+                    return true;
+                }
             }
           }
+          return false;
     }
 
     void dfs(){
@@ -38,7 +46,7 @@ public:
 
         for(int i=0; i<V; i++){  // for all vertices(multiple source points)
             if(!vis[i]){
-                dfsHelper(i, vis);
+                dfsHelper(i, vis, 0);
             }
         }
         
@@ -50,9 +58,10 @@ int main(){
 
     Graph g(5);
     g.addEdge(0,1);
+    g.addEdge(0,2);
+    g.addEdge(0,3);
     g.addEdge(1,2);
-    g.addEdge(1,3);
-    g.addEdge(2,4);
+    g.addEdge(3,4);
     g.dfs();
 
     return 0;
