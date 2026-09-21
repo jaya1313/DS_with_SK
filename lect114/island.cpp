@@ -23,6 +23,18 @@ public:
         l[v].push_back(u);
     }
 
+    void dfs(int i, int j, vector<vector<bool>> &vis, vector<vector<char>> &grid, int n, int m){
+        //base case
+        if(i<0 || j<0 || i>=n || j>=n || grid[i][j] != '1' || vis[i][j]){
+            return;
+        }
+
+        dfs(i-1, j, vis, grid, n, m);
+        dfs(i+1, j, vis, grid, n, m);
+        dfs(i, j-1, vis, grid, n, m);
+        dfs(i, j+1, vis, grid, n, m);
+    }
+
     int island(vector<vector<char>> grid){
         int islands = 0;
         int n = grid.size();
