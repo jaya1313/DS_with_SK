@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-// detect a cycle in graph using dfs traversal
+// detect a cycle in directed graph using dfs traversal
 
 class Graph{
     int V;  // no. of vertices of graph
@@ -18,34 +18,36 @@ public:
     void addEdge(int u, int v){
 
         l[u].push_back(v);
-        l[v].push_back(u);
+       
     }
 
-    bool isCycleUndirDFS(int src, vector<bool> &vis, int parent){  // O(V+E)
+    bool isCycleDirDFS(int curr, vector<bool> &vis, vector<bool> &recPath){  // O(V+E)
           
-          vis[src] = true;
-          list<int> neighbors = l[src]; 
+          vis[curr] = true;
+          recPath[curr] = true;
+          list<int> neighbors = l[curr]; 
 
           for(int v : neighbors){
             if(!vis[v]){
-                if(isCycleUndirDFS(v, vis, parent)){
+                if(isCycleDirDFS(v, vis, recPath)){
                    return true;
                 }
             }
-            else if(v!=parent){
+            else if(recPath[v]){
                     return true;
                 }
           }
+          recPath[curr] = false;
           return false;
     }
 
     bool isCycle(){
-        int u = 0;
         vector<bool> vis(V, false);
+         vector<bool> recPath(V, false);
 
         for(int i=0; i<V; i++){  // for all vertices(multiple source points)
             if(!vis[i]){
-               if(isCycleUndirDFS(i, vis, -1)){
+               if(isCycleDirDFS(i, vis, recPath)){
                 return true;
                }
             }
@@ -57,13 +59,12 @@ public:
 
 int main(){
 
-    Graph g(5);
-    g.addEdge(0,1);
+    Graph g(4);
+    g.addEdge(1,0);
     g.addEdge(0,2);
-    g.addEdge(0,3);
-    g.addEdge(1,2);
-    g.addEdge(3,4);
-
+    g.addEdge(2,3);
+    //g.addEdge(3,0);
+   
     cout << g.isCycle() << endl;
 
     return 0;
