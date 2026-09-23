@@ -5,8 +5,9 @@
 using namespace std;
 
 // finding the time in which all oranges gets rotten"
+//994 on leetcode
 
-   int rottenOranges(vector<vector<char>> &grid){
+   int rottenOranges(vector<vector<int>> &grid){
          
         int n = grid.size();
         int m = grid[0].size();
@@ -20,7 +21,7 @@ using namespace std;
             for(int j=0; j<m; j++){
                 if(grid[i][j] == 2 && !vis[i][j]){
                     q.push({{i,j}, 0});
-                    vis[i][j] == true;
+                    vis[i][j] = true;
                 }
             }
         }
@@ -30,42 +31,51 @@ using namespace std;
              int i = q.front().first.first;
              int j = q.front().first.second;
              int time = q.front().second;
+             q.pop();
 
              ans = max(ans, time);
 
-             if(i-1 >= 0 && grid[i][j] == 1 && !vis[i][j]){
-                q.push({{i,j}, time+1});
-                vis[i][j] == true;
+             if(i-1 >= 0 && grid[i-1][j] == 1 && !vis[i-1][j]){
+                q.push({{i-1,j}, time+1});
+                vis[i-1][j] = true;
              }
 
-             if(i-1 >= 0 && grid[i][j] == 1 && !vis[i][j]){
-                q.push({{i,j}, time+1});
-                vis[i][j] == true;
+             if(j+1 < m && grid[i][j+1] == 1 && !vis[i][j+1]){
+                q.push({{i,j+1}, time+1});
+                vis[i][j+1] = true;
              }
 
-             if(i-1 >= 0 && grid[i][j] == 1 && !vis[i][j]){
-                q.push({{i,j}, time+1});
-                vis[i][j] == true;
+             if(j-1 >= 0 && grid[i][j-1] == 1 && !vis[i][j-1]){
+                q.push({{i,j-1}, time+1});
+                vis[i][j-1] = true;
              }
 
-             if(i-1 >= 0 && grid[i][j] == 1 && !vis[i][j]){
-                q.push({{i,j}, time+1});
-                vis[i][j] == true;
+             if(i+1 < n && grid[i+1][j] == 1 && !vis[i+1][j]){
+                q.push({{i+1,j}, time+1});
+                vis[i+1][j] = true;
              }
-
         }
+        // checking if fresh eggs still exist - yes return -1
+         for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(grid[i][j] == 1 && !vis[i][j]){
+                   return -1;
+                }
+            }
+        }
+
+        return ans;
    }
 
 int main(){
 
-    vector<vector<char>> grid = {
-    {'1', '1', '0', '0', '0'},
-    {'1', '1', '0', '0', '0'},
-    {'0', '0', '1', '0', '0'},
-    {'0', '0', '0', '1', '1'}
+    vector<vector<int>> grid = {
+    {2, 1, 1},
+    {1, 1, 0},
+    {0, 1, 1}
 };
 
-     //cout << island(grid) << endl;
+     cout <<  rottenOranges(grid) << endl;
 
     return 0;
 }
