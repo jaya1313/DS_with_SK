@@ -22,7 +22,7 @@ public:
        
     }
 
-    void dfs(int curr, vector<bool> &vis, stack<int> &s){
+    void dfs(int curr, vector<bool> &vis, stack<int> &s){  //O(V+E)
 
         vis[curr] = true;
 
