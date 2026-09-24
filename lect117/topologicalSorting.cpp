@@ -3,6 +3,7 @@
 #include<iostream>
 #include<list>
 #include<vector>
+#include<stack>
 using namespace std;
 
 class Graph{
@@ -21,51 +22,49 @@ public:
        
     }
 
-    bool isCycleDirDFS(int curr, vector<bool> &vis, vector<bool> &recPath){  // O(V+E)
-          
-          vis[curr] = true;
-          recPath[curr] = true;
-          list<int> neighbors = l[curr]; 
+    void dfs(int curr, vector<bool> &vis, stack<int> &s){
 
-          for(int v : neighbors){
+        vis[curr] = true;
+
+        for(int v: l[curr]){
             if(!vis[v]){
-                if(isCycleDirDFS(v, vis, recPath)){
-                   return true;
-                }
-            }
-            else if(recPath[v]){
-                    return true;
-                }
-          }
-          recPath[curr] = false;
-          return false;
-    }
-
-    bool isCycle(){
-        vector<bool> vis(V, false);
-         vector<bool> recPath(V, false);
-
-        for(int i=0; i<V; i++){  // for all vertices(multiple source points)
-            if(!vis[i]){
-               if(isCycleDirDFS(i, vis, recPath)){
-                return true;
-               }
+                dfs(v, vis, s);
             }
         }
-        return false;
+        s.push(curr);
     }
+
+   void topoSort(){
+    vector<bool> vis(V, false);
+    stack<int> s;
+
+    for(int i=0; i<V; i++){
+        if(!vis[i]){
+            dfs(i, vis, s);
+        }
+    }
+
+    while(s.size() > 0){
+        cout << s.top() << " ";
+        s.pop();
+    }
+    cout << endl;
+   }
       
 };
 
 int main(){
 
-    Graph g(4);
-    g.addEdge(1,0);
-    g.addEdge(0,2);
+    Graph g(6);
+
+    g.addEdge(3,1);
     g.addEdge(2,3);
-    //g.addEdge(3,0);
+    g.addEdge(4,0);
+    g.addEdge(4,1);
+    g.addEdge(5,0);
+    g.addEdge(5,3);
    
-    cout << g.isCycle() << endl;
+    g.topoSort();
 
     return 0;
 }
