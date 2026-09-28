@@ -6,66 +6,40 @@ using namespace std;
 
 // course schedule 207 on leetcode
 
+bool isCycleDFS(int src,  vector<bool> &vis,  vector<bool> &recPath, vector<vector<int>>& edges){
+        vis[src] = true;
+        recPath[src] = true;
 
-class Graph{
-    int V;  // no. of vertices of graph
-    list<int>* l;    // a list 
+        for(int i=0; i<edges.size(); i++){
+            int v = edges[i][0];
+            int u = edges[i][1];
 
-public:
-    Graph(int V){ //constructor
-       this->V = V;
-       l = new list<int> [V];   // like arr = new int[V]
-    }
-    
-    void addEdge(int u, int v){
-
-        l[u].push_back(v);
-       
-    }
-
-    void dfs(int curr, vector<bool> &vis, stack<int> &s){  //O(V+E)
-
-        vis[curr] = true;
-
-        for(int v: l[curr]){
-            if(!vis[v]){
-                dfs(v, vis, s);
+            if(u == src) {
+                if(!vis[v]) {
+                    if(isCycleDFS(v, vis, recPath, edges)) {
+                        return true;
+                    }
+                }
+                else if(recPath[v]) {
+                    return true;
+                }
             }
         }
-        s.push(curr);
+        recPath[src] = false;
+        return false;
     }
 
-   void topoSort(){
-    vector<bool> vis(V, false);
-    stack<int> s;
+    bool canFinish(int n, vector<vector<int>>& edges) {
 
-    for(int i=0; i<V; i++){
-        if(!vis[i]){
-            dfs(i, vis, s);
+        vector<bool> vis(n, false);
+        vector<bool> recPath(n, false);
+
+        for(int i=0; i<n; i++){
+            if(!vis[i]) {
+                if(isCycleDFS(i,vis, recPath, edges)) {
+                    return false;
+                }
+            }
         }
+        return true;
     }
-
-    while(s.size() > 0){
-        cout << s.top() << " ";
-        s.pop();
-    }
-    cout << endl;
-   }
-      
-};
-
-int main(){
-
-    Graph g(6);
-
-    g.addEdge(3,1);
-    g.addEdge(2,3);
-    g.addEdge(4,0);
-    g.addEdge(4,1);
-    g.addEdge(5,0);
-    g.addEdge(5,3);
-   
-    g.topoSort();
-
-    return 0;
-}
