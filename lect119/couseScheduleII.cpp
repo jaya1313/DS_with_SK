@@ -1,0 +1,74 @@
+// course schedule 2
+// 210 on leetcode
+
+#include<iostream>
+#include<list>
+#include<vector>
+#include<stack>
+using namespace std;bool isCycleDFS(int src,vector<bool> &vis, vector<bool> &recpath, vector<vector<int>>& edges){
+         vis[src] = true;
+         recpath[src] = true;
+         for(int i=0; i<edges.size(); i++){
+            int v = edges[i][0];
+            int u = edges[i][1];
+
+            if(src == u){
+                if(!vis[v]){
+                    if(isCycleDFS(v, vis, recpath, edges)){
+                        return true;
+                    }
+                }
+                else if(recpath[v]){
+                    return true;
+                }
+            }
+         }
+         recpath[src] = false;
+         return false;
+    }
+
+    void topoOrder(int src, vector<bool> &vis, stack<int> &s,  vector<vector<int>>& edges){
+        vis[src] = true;
+
+        for(int i=0; i<edges.size(); i++){
+            int v = edges[i][0];
+            int u = edges[i][1];
+
+            if(src == u){
+                if(!vis[v]){
+                    topoOrder(v, vis, s, edges);
+                }
+            }
+        }
+     s.push(src);
+
+    }
+
+    vector<int> findOrder(int n, vector<vector<int>>& edges) {
+        vector<bool> vis(n, false);
+        vector<bool> recPath(n, false);
+        vector<int> ans;
+
+        for(int i=0; i<n; i++){
+            if(!vis[i]){
+                if(isCycleDFS(i, vis, recPath, edges)){
+                    return ans;
+                }
+            }
+        }
+        //topological sorted order
+        stack<int> s;
+        vis.assign(n, false);
+
+        for(int i=0; i<n; i++){
+            if(!vis[i]){
+               topoOrder(i, vis, s, edges);
+            }
+        }
+       while(s.size() > 0){
+        ans.push_back(s.top());
+        s.pop();
+       }
+       return ans;
+    }
+
