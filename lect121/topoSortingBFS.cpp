@@ -3,7 +3,7 @@
 #include<iostream>
 #include<list>
 #include<vector>
-#include<stack>
+#include<queue>
 using namespace std;
 
 class Graph{
@@ -22,47 +22,51 @@ public:
        
     }
 
-    void dfs(int curr, vector<bool> &vis, stack<int> &s){  //O(V+E)
-
-        vis[curr] = true;
-
-        for(int v: l[curr]){
-            if(!vis[v]){
-                dfs(v, vis, s);
-            }
-        }
-        s.push(curr);
-    }
-
    void topoSort(){
-    vector<bool> vis(V, false);
-    stack<int> s;
 
-    for(int i=0; i<V; i++){
-        if(!vis[i]){
-            dfs(i, vis, s);
+    // calc indegree
+    vector<int> indegree(V,0);
+    for(int u=0; u<V; u++){
+        for(int v : l[u]){
+            indegree[v]++;
         }
     }
 
-    while(s.size() > 0){
-        cout << s.top() << " ";
-        s.pop();
+    //pushing 0 to queue
+    queue<int>q;
+    for(int i=0; i<V; i++){
+        if(indegree[i] == 0){
+            q.push(i);
+        }
     }
-    cout << endl;
-   }
-      
+
+    // 
+    vector<int>res; 
+    while (q.size() > 0){
+       int curr = q.front();
+       q.pop();
+       res.push_back(curr);
+       for(int v: l[curr]){
+         
+       }
+
+    }
+    
+    
+}
 };
 
 int main(){
 
     Graph g(6);
 
+
     g.addEdge(3,1);
     g.addEdge(2,3);
     g.addEdge(4,0);
     g.addEdge(4,1);
     g.addEdge(5,0);
-    g.addEdge(5,3);
+    g.addEdge(5,2);
    
     g.topoSort();
 
