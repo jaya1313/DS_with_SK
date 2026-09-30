@@ -22,7 +22,7 @@ public:
        
     }
 
-   void topoSort(){
+   void topoSort(){  // O(V+E)
 
     // calc indegree
     vector<int> indegree(V,0);
@@ -47,11 +47,17 @@ public:
        q.pop();
        res.push_back(curr);
        for(int v: l[curr]){
-         
+         indegree[v]--;
+         if(indegree[v] == 0){
+            q.push(v);
+         }
        }
 
     }
-    
+    for(int val : res){
+        cout << val << " ";
+    }
+    cout << endl;
     
 }
 };
