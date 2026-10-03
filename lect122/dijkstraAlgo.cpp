@@ -17,7 +17,7 @@ class Edge{
 
 };
 
-void dijkstra(int src, vector<vector<Edge>> g, int V){
+void dijkstra(int src, vector<vector<Edge>> g, int V){ // t(n) = O((V+E) * logV) => O(E logE )
     vector<int> dist(V, INT_MAX);
     dist[src] = 0;
 
