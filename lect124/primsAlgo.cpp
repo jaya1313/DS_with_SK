@@ -5,20 +5,37 @@ using namespace std;
 
 // prims algorithm -> minimum cost with v vertex and v-1 edges
 
-class Edge{
-    public:
-    int v;
-    int wt;
-
-    Edge(int v, int wt){
-        this->v = v;
-        this->wt = wt;
-    }
-
-};
 
 int primMST(int V, vector<vector<pair<int,int>>> &adj){
+
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    vector<bool> inMST(V, false);
     
+    int mstCost = 0;
+    pq.push({0,0});
+
+    while(pq.size() > 0){
+        int wt = pq.top().first;
+        int u =  pq.top().second;
+        pq.pop();
+
+        if(!inMST[u]){
+            inMST[u] = true;
+            mstCost += wt;
+
+            for(int i=0; i<adj[u].size(); i++){
+                int v = adj[u][i].first;
+                int wt1 = adj[u][i].second;
+
+                if(!inMST[v]){
+                    pq.push({wt1,v});
+                }
+            }
+        }
+
+    }
+    return mstCost;
+
 }
 
 int main(){
@@ -28,7 +45,7 @@ int main(){
     adj[0].push_back({1,10}); // v, wt
     adj[1].push_back({0,10});
 
-    adj[0].push_back({3,10});
+    adj[0].push_back({3,30});
     adj[3].push_back({0,30});
 
     adj[0].push_back({2,15});
