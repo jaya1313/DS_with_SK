@@ -5,6 +5,42 @@
 #include<queue>
 using namespace std;
 
+class DisjointSetUnion{
+    public:
+    int n;
+    vector<int> par, rank;
+
+    DisjointSetUnion(int n){
+        this->n = n;
+
+        for(int i=0; i<n; i++){
+            par.push_back(i);
+            rank.push_back(0);
+        }
+    }
+
+    void unionByRank(int a, int b){
+
+    }
+
+    int find(int x){
+        
+    }
+
+};
+
 int main(){
+    DisjointSetUnion dsu(6);
+    
+    dsu.unionByRank(0,2);
+    cout << dsu.find(2) << endl;
+
+    dsu.unionByRank(1,3);
+    dsu.unionByRank(2,5);
+    dsu.unionByRank(0,3);
+    cout << dsu.find(2) << endl;
+
+    dsu.unionByRank(0,4);
+
     return 0;
 }
