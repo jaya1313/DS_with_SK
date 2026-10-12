@@ -24,7 +24,10 @@ class DisjointSetUnion{
     }
 
     int find(int x){
-        
+        if(par[x] == x){
+            return x;
+        }
+        return find(par[x]);
     }
 
 };
