@@ -20,6 +20,28 @@ class DisjointSetUnion{
     }
 
     void unionByRank(int a, int b){
+        int parA = find(a);
+        int parB = find(b);
+
+        if(parA == parB){
+            return;
+        }
+
+        //case1
+        if(rank[parA] == rank[parB]){
+            par[parB] = parA;
+            rank[parA]++;
+        }
+
+        // case2
+        else if(rank[parA] > rank[parB]){
+            par[parB] = parA;
+        }
+
+        //case3
+        else{
+            par[parA] = parB;
+        }
 
     }
 
