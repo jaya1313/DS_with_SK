@@ -52,6 +52,17 @@ class DisjointSetUnion{
         return find(par[x]);
     }
 
+    void getInfo(){
+        for(int i=0; i<n; i++){
+            cout << par[i] << " ";
+        }
+        cout << endl;
+
+        for(int i=0; i<n; i++){
+            cout << rank[i] << " ";
+        }
+    }   
+
 };
 
 int main(){
@@ -66,6 +77,8 @@ int main(){
     cout << dsu.find(2) << endl;
 
     dsu.unionByRank(0,4);
+
+    dsu.getInfo();
 
     return 0;
 }
