@@ -2,6 +2,35 @@
 #include<vector>
 using namespace std;
 
+class Edge{
+    public:
+    int u, v, wt;
+
+    Edge(int u, int v, int wt){
+        this->u = u;
+        this->v = v;
+        this->wt = wt;
+    }
+
+    //comparator => <
+    bool operator<(const Edge &other) const{
+       // return this->wt < other->wt;
+    }
+};
+
+class Graph{
+    public:
+    int v;
+
+    Graph(int v){
+        this->v = v;
+    }
+
+    int addEdge(int u, int v, int wt){
+
+    }
+};
+
 int main(){
     Graph graph(4);
 
