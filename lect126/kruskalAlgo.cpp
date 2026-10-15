@@ -20,14 +20,47 @@ class Edge{
 
 class Graph{
     public:
-    int v;
+    int V;
+    vector<Edge> edges;
+    vector<int> par, rank;
 
-    Graph(int v){
-        this->v = v;
+    Graph(int V){
+        this->V = V;
+        for(int i=0; i<V; i++){
+            par.push_back(i);
+            rank.push_back(0);
+        }
     }
 
-    int addEdge(int u, int v, int wt){
+    void addEdge(int u, int v, int wt){
+        edges.push_back(Edge(u, v, wt));
 
+    }
+
+    int find(int x){
+        if(par[x] == x){
+            return x;
+        }
+        return par[x] = find(par[x]);
+    }
+
+    void unionByRank(int a, int b){
+        int parA = find(a);
+        int parB = find(b);
+
+        if(parA == parB){
+            return;
+        }
+        if(rank[parA] == rank[parB]){
+            par[parB] = parA;
+            rank[parA]++;
+        }
+        else if(rank[parA] > rank[parB]){
+            par[parB] = parA;
+        }
+        else{
+            par[parA] = parB;
+        }
     }
 };
 
