@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 class Edge{
@@ -14,7 +15,7 @@ class Edge{
 
     //comparator => <
     bool operator<(const Edge &other) const{
-       // return this->wt < other->wt;
+        return this->wt < other.wt;
     }
 };
 
@@ -62,6 +63,25 @@ class Graph{
             par[parA] = parB;
         }
     }
+
+    void kruskalAlgo(){
+        sort(edges.begin(), edges.end()); // O(ElogE)
+        int mstcost = 0;
+
+        for(int i=0; i<edges.size(); i++){
+            Edge e = edges[i];
+
+            int parU = find(e.u);
+            int parV = find(e.v);
+
+            if(parU != parV){
+                unionByRank(e.u, e.v);
+                mstcost += e.wt;
+            }
+        }
+
+        cout << "MST Cost: " << mstcost << endl;
+    }
 };
 
 int main(){
@@ -72,4 +92,8 @@ int main(){
     graph.addEdge(0,3,5);
     graph.addEdge(1,3,15);
     graph.addEdge(2,3,4);
+
+    graph.kruskalAlgo();
+
+    return 0;
 }
