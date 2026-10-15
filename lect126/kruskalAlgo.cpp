@@ -64,11 +64,12 @@ class Graph{
         }
     }
 
-    void kruskalAlgo(){
+    void kruskalAlgo(){ // O(ElogE)
         sort(edges.begin(), edges.end()); // O(ElogE)
         int mstcost = 0;
+        int count = 0;
 
-        for(int i=0; i<edges.size(); i++){
+        for(int i=0; i<edges.size() && count < V-1; i++){
             Edge e = edges[i];
 
             int parU = find(e.u);
@@ -77,6 +78,7 @@ class Graph{
             if(parU != parV){
                 unionByRank(e.u, e.v);
                 mstcost += e.wt;
+                count++;
             }
         }
 
