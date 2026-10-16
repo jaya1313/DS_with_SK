@@ -7,21 +7,23 @@
 #include<iostream>
 using namespace std;
 
-void dfsHelper(int i, vector<vector<int>> &adj, vector<bool> &vis, int n){
+void dfsHelper(int i, vector<vector<int>> &adj, vector<bool> &vis){
+    int n = adj.size();
     vis[i] = true;
     for(int j=0; j<n; j++){
         if(adj[i][j]==1 && !vis[j]){
-            dfsHelper(j, adj, vis, n);
+            dfsHelper(j, adj, vis);
         }
     }
 }
 
-int dfs(vector<vector<int>> &adj, int n){
+int dfs(vector<vector<int>> &adj){  // O(n square)
+    int n = adj.size();
     vector<bool> vis(n, false);
     int ans = 0;
     for(int i=0; i<n; i++){
         if(!vis[i]){
-            dfsHelper(i, adj, vis, n);
+            dfsHelper(i, adj, vis);
             ans++;
         }
     }
@@ -31,7 +33,7 @@ int dfs(vector<vector<int>> &adj, int n){
 int main(){
 
     vector<vector<int>> adj = {{1,1,0},{1,1,0},{0,0,1}};
-    cout << dfs(adj, 4);
+    cout << dfs(adj);
 
     return 0;
 }
