@@ -7,7 +7,7 @@
 #include<queue>
 using namespace std;
 
-int minCostToConnect(vector<vector<int>> &points){
+int minCostToConnect(vector<vector<int>> &points){  // O(n^2 * logn)
     int n = points.size();
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> pq;
     pq.push({0,0});
