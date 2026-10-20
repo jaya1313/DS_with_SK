@@ -8,19 +8,37 @@
 using namespace std;
 
 int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int k){
-    vector<pair<int, int>> adj(n);
+    vector<vector<pair<int, int>>> adj(n);
     for(auto vec : flights){
         int u = vec[0];
         int v = vec[1];
         int wt = vec[2];
-        adj.push_back({v,wt});
+        adj[u].push_back({v,wt});
     }
 
     vector<int> dist(n, INT_MAX);
     dist[src] = 0;
 
     queue<pair<int,pair<int,int>>> q;  // node,{cost, k}
-    q.push({src,{0,-1}})
+    q.push({src,{0,-1}});
+
+    while(q.size() > 0){
+        auto val = q.front();
+        int u = val.first;
+        int cost = val.second.first;
+        int stop = val.second.second;
+        q.pop();
+        for(auto edge: adj[u]){
+           int v = edge.first;
+           int wt = edge.second;
+
+           if((dist[v] > cost + wt) && stop+1 <= k){
+             dist[v] = cost + wt;
+             q.push({v, {dist[v], stop+1}});
+           }
+
+        }
+    }
 }
 
 int main(){
