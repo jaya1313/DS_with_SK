@@ -39,10 +39,15 @@ int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dst, int
 
         }
     }
+    if(dist[dst] == INT_MAX){
+       return -1; 
+        }
+        return dist[dst];
 }
 
 int main(){
     int n = 4;
     vector<vector<int>> flights = {{0,1,100},{1,2,100},{2,0,100},{1,3,600},{2,3,200}};
+    cout << findCheapestPrice(n, flights, 0, 3, 1);
     return 0;
 }
