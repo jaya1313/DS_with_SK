@@ -1,4 +1,5 @@
 // bridge in a graph - trajan algo
+//1192 on leetcode
 
 #include<vector>
 #include<iostream>
