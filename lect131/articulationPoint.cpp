@@ -2,6 +2,7 @@
 
 #include<iostream>
 #include<vector>
+#include<set>
 using namespace std;
 
 class Graph{
@@ -22,7 +23,7 @@ class Graph{
         adj[v].push_back(u);
        }
 
-       void dfs(int u, int parU){
+       void dfs(int u, int parU, set<int> &criticalPoints){
         dt[u] = low[u] = ++time;
         int children = 0;
 
@@ -31,11 +32,12 @@ class Graph{
 
            if(dt[u] == -1){
             children++;
-            dfs(v, u);
+            dfs(v, u, criticalPoints);
             low[u] = min(low[u], low[v]);
 
             if(parU != -1 && low[v] >= dt[u]){
                 // articulation point
+                criticalPoints.insert(u);
             }
             else if(v!= parU){
                 low[u] = min(low[v], dt[u]);
@@ -45,6 +47,7 @@ class Graph{
         }
         if(parU == -1 && children > 1){
             // articulation point
+            criticalPoints.insert(u);
         }
 
        }
@@ -54,7 +57,14 @@ class Graph{
             dt.resize(V, -1);
             low.resize(V);
 
+            set<int> criticalPoints;
 
+            for(int i=0; i<V; i++){
+                if(dt[i] == -1){
+                    dfs(i, -1, criticalPoints);
+                }
+            }
+            return criticalPoints.size();
        }
 };
 
