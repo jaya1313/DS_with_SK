@@ -5,10 +5,13 @@
 using namespace std;
 
 class Graph{
+    public:
     vector<vector<int>> adj;
     int V;
 
-    public:
+    int time;
+    vector<int> dt, low;
+
        Graph(int V){
         this->V = V;
         adj.resize(V);
@@ -19,7 +22,38 @@ class Graph{
         adj[v].push_back(u);
        }
 
+       void dfs(int u, int parU){
+        dt[u] = low[u] = ++time;
+        int children = 0;
+
+        for(int i=0; i<adj[u].size(); i++){
+           int v = adj[u][i];
+
+           if(dt[u] == -1){
+            children++;
+            dfs(v, u);
+            low[u] = min(low[u], low[v]);
+
+            if(parU != -1 && low[v] >= dt[u]){
+                // articulation point
+            }
+            else if(v!= parU){
+                low[u] = min(low[v], dt[u]);
+            }
+            
+           }
+        }
+        if(parU == -1 && children > 1){
+            // articulation point
+        }
+
+       }
+
        int articulationPoints(){
+            time = 0;
+            dt.resize(V, -1);
+            low.resize(V);
+
 
        }
 };
