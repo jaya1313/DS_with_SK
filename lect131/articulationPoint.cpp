@@ -30,7 +30,7 @@ class Graph{
         for(int i=0; i<adj[u].size(); i++){
            int v = adj[u][i];
 
-           if(dt[u] == -1){
+           if(dt[v] == -1){
             children++;
             dfs(v, u, criticalPoints);
             low[u] = min(low[u], low[v]);
@@ -64,6 +64,10 @@ class Graph{
                     dfs(i, -1, criticalPoints);
                 }
             }
+            for(auto val : criticalPoints){
+                cout << val << " ";
+            }
+            cout << endl;
             return criticalPoints.size();
        }
 };
