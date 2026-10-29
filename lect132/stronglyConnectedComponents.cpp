@@ -35,6 +35,17 @@ class Graph{
         s.push(curr);
       }
 
+      void dfs(int curr, vector<bool> &vis, vector<vector<int>> &transpose){
+        vis[curr] = true;
+        cout << curr << " ";
+
+        for(auto v : transpose[curr]){
+            if(!vis[v]){
+                dfs(v, vis, transpose);
+            }
+      }
+    }
+
        void kosaraju(){
         // step1 - topo order
         stack<int> s;
@@ -46,7 +57,28 @@ class Graph{
             }
         }
 
-        // step2
+        // step2 - transpose graph
+
+        vector<vector<int>> transpose(V);
+
+        for(int u=0; u<V; u++){ // u--> v
+            vis[u] = false;
+            for(int v : adj[u]) {
+                transpose[v].push_back(u);  // v --> u
+            }
+        }
+
+        // step 3 - dfs on transpose
+        cout << "Printing the SCC: \n";
+        while(s.size() > 0){
+            int curr = s.top();
+            s.pop();
+
+            if(!vis[curr]){
+                dfs(curr, vis, transpose);
+                cout << endl;
+            }
+        }
 
        }
     };
