@@ -47,7 +47,24 @@ class Graph{
         }
 
         // print
-        
+        for(int i=0; i<V; i++){
+            for(int j=0; j<V; j++){
+                if(dist[i][j] == INF){
+                    cout << "INF";
+                }
+                else{
+                    cout << dist[i][j] << " ";
+                }
+            }
+            cout << endl;
+        }
+
+        for(int i=0; i<V; i++){
+            if(dist[i][i] < 0){
+                cout << "Negative weighted cycle exists \n";
+                break;
+            }
+        }
 
        }
 
